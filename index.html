@@ -8,10 +8,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
+  /* Original Theme Colors */
   --bg: #050d1a;
   --bg2: #0a1628;
   --bg3: #0f1f35;
   --accent: #00c8ff;
+  --accent2: #0077ff;
   --text: #e8f0ff;
   --muted: #7a90b0;
   --border: rgba(0, 200, 255, 0.15);
@@ -67,7 +69,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 
 /* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;padding:0 3rem;position:relative;z-index:1}
-.hero-content{max-width:750px; position:relative; z-index:2;}
+.hero-content{max-width:800px; position:relative; z-index:2;}
 .hero-tag{display:inline-flex;align-items:center;gap:10px;background:rgba(0, 200, 255, 0.08);border:1px solid rgba(0, 200, 255, 0.3);border-radius:100px;padding:.4rem 1.2rem;font-size:.8rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem;animation:fadeUp .6s ease both;box-shadow:var(--glow-subtle)}
 .hero-tag::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;box-shadow:var(--glow)}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
@@ -267,6 +269,9 @@ footer a:hover{text-decoration:underline;text-shadow:var(--glow-subtle)}
       </a>
       <a href="#projects" class="btn-outline">
         <span class="en">View Projects</span><span class="ar">عرض المشاريع</span>
+      </a>
+      <a href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank" class="btn-outline" style="border-color: rgba(0, 200, 255, 0.8);">
+        <span class="en">📁 View Drive Archive</span><span class="ar">📁 تصفح أرشيف الشهادات</span>
       </a>
     </div>
 
@@ -497,8 +502,8 @@ footer a:hover{text-decoration:underline;text-shadow:var(--glow-subtle)}
 
   <div style="text-align: center; margin-top: 3.5rem;">
     <button onclick="toggleCerts()" id="toggleCertsBtn" class="btn-primary" style="padding: 1rem 3rem; font-size: 1.05rem;">
-      <span class="en">⬇ Show All Certificates (16+)</span>
-      <span class="ar">⬇ عرض جميع الشهادات (16+)</span>
+      <span class="en">⬇ Show All Certificates (15+)</span>
+      <span class="ar">⬇ عرض جميع الشهادات (15+)</span>
     </button>
   </div>
 
@@ -638,9 +643,9 @@ function toggleCerts() {
 function updateToggleButtonText() {
   const btn = document.getElementById('toggleCertsBtn');
   if(currentLang === 'en') {
-    btn.innerHTML = certsVisible ? '<span class="en">⬆ Hide Certificates</span>' : '<span class="en">⬇ Show All Certificates (16+)</span>';
+    btn.innerHTML = certsVisible ? '<span class="en">⬆ Hide Certificates</span>' : '<span class="en">⬇ Show All Certificates (15+)</span>';
   } else {
-    btn.innerHTML = certsVisible ? '<span class="ar">⬆ إخفاء الشهادات</span>' : '<span class="ar">⬇ عرض جميع الشهادات (16+)</span>';
+    btn.innerHTML = certsVisible ? '<span class="ar">⬆ إخفاء الشهادات</span>' : '<span class="ar">⬇ عرض جميع الشهادات (15+)</span>';
   }
 }
 
