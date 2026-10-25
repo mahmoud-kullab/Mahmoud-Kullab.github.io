@@ -3,320 +3,1272 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mahmoud Sami Kullab — Cybersecurity Portfolio</title>
+<title>Mahmoud Sami Kullab — Cybersecurity & Network Engineer Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  /* Original Theme Colors */
-  --bg: #050d1a;
-  --bg2: #0a1628;
-  --bg3: #0f1f35;
-  --accent: #00c8ff;
-  --accent2: #0077ff;
-  --text: #e8f0ff;
-  --muted: #7a90b0;
-  --border: rgba(0, 200, 255, 0.15);
-  --card: rgba(10, 22, 40, 0.85);
-  --glow: 0 0 20px rgba(0, 200, 255, 0.4);
-  --glow-subtle: 0 0 10px rgba(0, 200, 255, 0.15);
+  --bg: #030812;
+  --bg2: #071022;
+  --bg3: #0c1b38;
+  --accent: #00d2ff;
+  --accent-soft: rgba(0, 210, 255, 0.12);
+  --accent2: #0066ff;
+  --emerald: #00e676;
+  --emerald-soft: rgba(0, 230, 118, 0.12);
+  --amber: #ffab00;
+  --text: #f0f6ff;
+  --muted: #8aa2c4;
+  --border: rgba(0, 210, 255, 0.15);
+  --border-strong: rgba(0, 210, 255, 0.45);
+  --card: rgba(8, 18, 38, 0.82);
+  --glow: 0 0 28px rgba(0, 210, 255, 0.35);
+  --glow-subtle: 0 0 14px rgba(0, 210, 255, 0.14);
+  --radius: 18px;
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
-[lang="ar"] body,[dir="rtl"] body{font-family:'Cairo',sans-serif}
-.ar{display:none} .en{display:block}
-html[lang="ar"] .ar{display:block} html[lang="ar"] .en{display:none}
-html[lang="ar"]{direction:rtl}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
 
-/* BACKGROUND EFFECTS */
+/* LANGUAGE VISIBILITY RULES */
+html[lang="ar"] body { font-family: 'Cairo', sans-serif; }
+html[lang="ar"] { direction: rtl; }
+html[lang="en"] .ar { display: none !important; }
+html[lang="ar"] .en { display: none !important; }
+
+/* SCROLL PROGRESS BAR */
+#scrollProgress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--emerald));
+  z-index: 2000;
+  box-shadow: 0 0 12px var(--accent);
+  transition: width 0.1s ease-out;
+}
+
+/* CUSTOM SCROLLBAR */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #14284a; border-radius: 4px; border: 1px solid var(--border); }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* CYBER GRID & AMBIENT BACKGROUND */
 body::before {
-  content: ''; position: fixed; inset: 0;
-  background-image: 
-    linear-gradient(rgba(0, 200, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 200, 255, 0.04) 1px, transparent 1px);
-  background-size: 50px 50px; pointer-events: none; z-index: -3;
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 210, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 210, 255, 0.035) 1px, transparent 1px);
+  background-size: 46px 46px;
+  pointer-events: none;
+  z-index: -3;
 }
 body::after {
-  content: ''; position: fixed; inset: 0;
-  background: radial-gradient(circle at 50% 50%, transparent 10%, #050d1a 90%);
-  pointer-events: none; z-index: -2;
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 50% 15%, transparent 10%, var(--bg) 88%);
+  pointer-events: none;
+  z-index: -2;
 }
-.cyber-scanlines {
-  position: fixed; inset: 0; pointer-events: none; z-index: -1;
-  background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(0, 200, 255, 0.02) 50%);
-  background-size: 100% 4px;
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(115px);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.48;
 }
+.orb1 { width: 500px; height: 500px; background: rgba(0, 102, 255, 0.18); top: 5%; right: -120px; }
+.orb2 { width: 380px; height: 380px; background: rgba(0, 210, 255, 0.13); bottom: 8%; left: -100px; }
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 3rem;background:rgba(5, 13, 26, 0.85);backdrop-filter:blur(15px);border-bottom:1px solid var(--border)}
-.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;color:var(--accent);letter-spacing:.08em;text-shadow:var(--glow-subtle)}
-.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:.875rem;font-weight:500;transition:all 0.3s}
-.nav-links a:hover{color:var(--accent);text-shadow:var(--glow-subtle)}
-.nav-actions{display:flex;gap:.75rem;align-items:center}
-
-/* BUTTONS */
-.lang-btn{background:rgba(0, 200, 255, 0.08);border:1px solid rgba(0, 200, 255, 0.3);border-radius:100px;padding:.35rem 1rem;color:var(--accent);font-size:.85rem;font-weight:600;cursor:pointer;transition:all 0.3s}
-.lang-btn:hover{background:rgba(0, 200, 255, 0.2);box-shadow:var(--glow)}
-.cv-btn{background:var(--accent);color:var(--bg);padding:.4rem 1.2rem;border-radius:8px;font-size:.85rem;font-weight:700;text-decoration:none;transition:all 0.3s;box-shadow:var(--glow-subtle)}
-.cv-btn:hover{background:#33d4ff;transform:translateY(-2px);box-shadow:var(--glow)}
-.btn-primary{background:var(--accent);color:var(--bg);padding:.8rem 2rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:.95rem;transition:all 0.3s;border:none;cursor:pointer;display:inline-block;text-align:center;box-shadow:var(--glow-subtle)}
-.btn-primary:hover{background:#33d4ff;transform:translateY(-3px);box-shadow:var(--glow)}
-.btn-outline{background:transparent;color:var(--accent);padding:.8rem 2rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:.95rem;border:1px solid rgba(0, 200, 255, 0.4);transition:all 0.3s;display:inline-block;text-align:center; cursor: pointer;}
-.btn-outline:hover{border-color:var(--accent);background:rgba(0, 200, 255, 0.1);transform:translateY(-3px);box-shadow:var(--glow)}
-
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;padding:0 3rem;position:relative;z-index:1}
-.hero-content{max-width:800px; position:relative; z-index:2;}
-.hero-tag{display:inline-flex;align-items:center;gap:10px;background:rgba(0, 200, 255, 0.08);border:1px solid rgba(0, 200, 255, 0.3);border-radius:100px;padding:.4rem 1.2rem;font-size:.8rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem;animation:fadeUp .6s ease both;box-shadow:var(--glow-subtle)}
-.hero-tag::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;box-shadow:var(--glow)}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
-.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,5.5vw,4.5rem);font-weight:800;line-height:1.1;margin-bottom:.5rem;animation:fadeUp .6s .1s ease both}
-html[lang="ar"] .hero h1{font-family:'Cairo',sans-serif;font-weight:700}
-.hero h1 span{color:var(--accent);text-shadow:var(--glow)}
-.hero-sub{font-size:1.2rem;color:var(--muted);margin-bottom:1.5rem;animation:fadeUp .6s .2s ease both}
-.hero-desc{font-size:1rem;color:rgba(232,240,255,.8);margin-bottom:2.5rem;max-width:600px;animation:fadeUp .6s .3s ease both;line-height:1.8}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .6s .4s ease both}
-
-/* GLOWING ORBS */
-.orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;opacity:0.6}
-.orb1{width:500px;height:500px;background:rgba(0, 119, 255, 0.15);top:10%;right:-100px;animation:float 8s ease-in-out infinite}
-.orb2{width:350px;height:350px;background:rgba(0, 200, 255, 0.12);bottom:15%;left:10%;animation:float 10s ease-in-out infinite reverse}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-30px)}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-
-/* SECTIONS */
-section{position:relative;z-index:1;padding:6rem 3rem;max-width:1150px;margin:0 auto}
-.section-label{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:.8rem;text-shadow:var(--glow-subtle)}
-.section-title{font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:800;margin-bottom:3rem;position:relative}
-html[lang="ar"] .section-title{font-family:'Cairo',sans-serif}
-
-/* ABOUT */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-.about-text p{color:rgba(232,240,255,.85);margin-bottom:1rem;font-size:1rem;line-height:1.8}
-.career-obj{margin-top:2rem;padding:1.5rem;background:rgba(0,200,255,0.05);border-left:4px solid var(--accent);border-radius:0 12px 12px 0;}
-.career-obj h3{color:var(--accent);font-size:1.1rem;margin-bottom:0.5rem;}
-.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
-.stat-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.8rem;text-align:center;transition:all .4s;position:relative;overflow:hidden}
-.stat-card::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(45deg, transparent, rgba(0,200,255,0.05), transparent);transform:translateX(-100%);transition:0.5s}
-.stat-card:hover::after{transform:translateX(100%)}
-.stat-card:hover{border-color:var(--accent);box-shadow:var(--glow);transform:translateY(-5px)}
-.stat-num{font-family:'Syne',sans-serif;font-size:2.5rem;font-weight:800;color:var(--accent);display:block;text-shadow:var(--glow-subtle)}
-.stat-label{font-size:.9rem;color:var(--muted);margin-top:.3rem;font-weight:500}
-
-/* SKILLS */
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
-.skill-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.8rem;transition:all .4s}
-.skill-card:hover{border-color:var(--accent);transform:translateY(-5px);box-shadow:var(--glow)}
-.skill-category{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--accent);letter-spacing:.05em;margin-bottom:.8rem;text-transform:uppercase}
-html[lang="ar"] .skill-category{font-family:'Cairo',sans-serif}
-.skill-tags{display:flex;flex-wrap:wrap;gap:.5rem}
-.tag{background:rgba(0, 200, 255, 0.05);border:1px solid rgba(0, 200, 255, 0.2);border-radius:100px;padding:.3rem .8rem;font-size:.8rem;color:rgba(232,240,255,.9);transition:0.3s}
-.tag:hover{background:rgba(0, 200, 255, 0.15);border-color:var(--accent);box-shadow:var(--glow-subtle)}
-
-/* TIMELINE */
-.timeline{position:relative;padding-left:2rem}
-html[lang="ar"] .timeline{padding-left:0;padding-right:2rem}
-.timeline::before{content:'';position:absolute;left:0;top:10px;bottom:0;width:2px;background:rgba(0, 200, 255, 0.2)}
-html[lang="ar"] .timeline::before{left:auto;right:0}
-.timeline-item{padding-bottom:3rem;position:relative}
-.timeline-item::before{content:'';position:absolute;left:-2.4rem;top:8px;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:var(--glow)}
-html[lang="ar"] .timeline-item::before{left:auto;right:-2.4rem}
-.tl-date{font-size:.85rem;color:var(--accent);font-weight:700;letter-spacing:.05em;margin-bottom:.4rem;display:inline-block;background:rgba(0,200,255,0.1);padding:0.2rem 0.8rem;border-radius:100px}
-.tl-title{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:var(--text);margin-bottom:.3rem;margin-top:0.5rem}
-html[lang="ar"] .tl-title{font-family:'Cairo',sans-serif}
-.tl-org{font-size:.95rem;color:var(--muted);margin-bottom:.8rem;font-weight:500}
-.tl-desc{font-size:.95rem;color:rgba(232,240,255,.8);line-height:1.7}
-.tl-badge{display:inline-block;background:transparent;border:1px solid var(--accent);border-radius:100px;padding:.15rem .6rem;font-size:.75rem;color:var(--accent);margin-left:.6rem;vertical-align:middle}
-html[lang="ar"] .tl-badge{margin-left:0;margin-right:.6rem}
-
-/* CERTS */
-.certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem; transition: max-height 0.5s ease-in-out;}
-.cert-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.8rem;transition:all .4s;display:flex;flex-direction:column;gap:.5rem}
-.cert-card:hover{border-color:var(--accent);transform:translateY(-5px);box-shadow:var(--glow)}
-.cert-name{font-weight:700;font-size:1.05rem;color:var(--text);line-height:1.4}
-.cert-issuer{font-size:.85rem;color:var(--accent);font-weight:500}
-.cert-date{font-size:.8rem;color:var(--muted)}
-.cert-verify{font-size:.8rem;color:var(--accent);text-decoration:none;margin-top:.8rem;font-weight:600;display:inline-flex;align-items:center;gap:5px; cursor: pointer;}
-.cert-verify:hover{text-shadow:var(--glow)}
-
-/* PROJECTS */
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(500px,1fr));gap:2rem}
-.project-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2.5rem;transition:all .4s;position:relative;overflow:hidden}
-.project-card:hover{border-color:var(--accent);transform:translateY(-6px);box-shadow:var(--glow)}
-.project-header{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.5rem}
-.project-icon{width:60px;height:60px;background:rgba(0, 200, 255, 0.08);border:1px solid rgba(0, 200, 255, 0.3);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;box-shadow:var(--glow-subtle)}
-.project-title{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800}
-html[lang="ar"] .project-title{font-family:'Cairo',sans-serif}
-.project-tech{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-.project-badge{display:inline-block;background:rgba(0, 200, 255, 0.1);border:1px solid rgba(0, 200, 255, 0.2);border-radius:6px;padding:.2rem .6rem;font-size:.75rem;color:var(--accent);font-weight:600}
-.project-desc{font-size:1rem;color:rgba(232,240,255,.85);margin-bottom:1.5rem;line-height:1.7}
-.project-features{list-style:none;margin-bottom:2rem}
-.project-features li{font-size:.9rem;color:rgba(232,240,255,.75);padding:.3rem 0 .3rem 1.5rem;position:relative}
-html[lang="ar"] .project-features li{padding-left:0;padding-right:1.5rem}
-.project-features li::before{content:'▹';position:absolute;left:0;color:var(--accent);font-weight:800;font-size:1.1rem}
-html[lang="ar"] .project-features li::before{left:auto;right:0}
-
-/* CONTACT */
-.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:center}
-.contact-info{display:flex;flex-direction:column;gap:1rem}
-.contact-item{display:flex;align-items:center;gap:1.2rem;padding:1.2rem 1.5rem;background:var(--card);border:1px solid var(--border);border-radius:16px;text-decoration:none;color:var(--text);transition:all .4s}
-.contact-item:hover{border-color:var(--accent);transform:translateX(8px);box-shadow:var(--glow)}
-html[lang="ar"] .contact-item:hover{transform:translateX(-8px)}
-.contact-icon{width:45px;height:45px;background:rgba(0, 200, 255, 0.08);border:1px solid rgba(0, 200, 255, 0.2);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;color:var(--accent)}
-.contact-label{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
-.contact-value{font-size:1rem;font-weight:600}
-
-/* Smart Secure Action Box */
-.secure-box{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:3rem;text-align:center;box-shadow:var(--glow-subtle);position:relative;overflow:hidden}
-.secure-box::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:var(--accent);box-shadow:var(--glow)}
-.secure-box h3{color:var(--text);font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;margin-bottom:1rem}
-html[lang="ar"] .secure-box h3{font-family:'Cairo',sans-serif}
-.secure-box p{color:var(--muted);font-size:1rem;margin-bottom:2.5rem;line-height:1.6}
-.secure-box .btn-primary, .secure-box .btn-outline {width:100%; display:block; margin-bottom:1.2rem; padding:1.2rem; font-size:1.05rem;}
-
-/* FOOTER */
-footer{position:relative;z-index:1;text-align:center;padding:3rem;border-top:1px solid var(--border);color:var(--muted);font-size:.9rem;background:var(--bg2)}
-footer a{color:var(--accent);text-decoration:none;font-weight:600}
-footer a:hover{text-decoration:underline;text-shadow:var(--glow-subtle)}
-
-/* REVEAL ANIMATIONS */
-.reveal{opacity:0;transform:translateY(40px);transition:all 0.8s cubic-bezier(0.5, 0, 0, 1)}
-.reveal.visible{opacity:1;transform:translateY(0)}
-
-/* JS TOGGLE HELPER */
-.hidden-certs {
-    display: none;
-    margin-top: 1.5rem;
+/* NAVBAR */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.95rem 3.5rem;
+  background: rgba(3, 8, 18, 0.86);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
 }
-.visible-certs {
-    display: grid;
-    animation: fadeInDown 0.5s ease;
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+.nav-logo-badge {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(0, 210, 255, 0.22), rgba(0, 102, 255, 0.22));
+  border: 1px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--accent);
+  box-shadow: var(--glow-subtle);
+}
+.nav-logo-text {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.18rem;
+  color: var(--text);
+  letter-spacing: 0.06em;
+}
+.nav-logo-text span { color: var(--accent); }
+
+.nav-links {
+  display: flex;
+  gap: 1.7rem;
+  list-style: none;
+  align-items: center;
+}
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.25s;
+  padding: 0.3rem 0;
+  position: relative;
+}
+.nav-links a:hover, .nav-links a.active {
+  color: var(--accent);
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  bottom: -2px;
+  width: 0; height: 2px;
+  background: var(--accent);
+  box-shadow: var(--glow-subtle);
+  transition: width 0.25s ease;
+}
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+.nav-actions { display: flex; gap: 0.75rem; align-items: center; }
+
+.lang-btn {
+  background: rgba(0, 210, 255, 0.08);
+  border: 1px solid rgba(0, 210, 255, 0.35);
+  border-radius: 100px;
+  padding: 0.38rem 1.05rem;
+  color: var(--accent);
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s;
+  font-family: inherit;
+}
+.lang-btn:hover { background: rgba(0, 210, 255, 0.2); box-shadow: var(--glow-subtle); }
+
+.cv-btn {
+  background: linear-gradient(135deg, var(--accent), #0088ff);
+  color: #030812;
+  padding: 0.42rem 1.2rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: all 0.25s;
+  box-shadow: var(--glow-subtle);
+}
+.cv-btn:hover { transform: translateY(-2px); box-shadow: var(--glow); }
+
+.mobile-toggle {
+  display: none;
+  background: rgba(0, 210, 255, 0.08);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  font-size: 1.25rem;
+  cursor: pointer;
 }
 
-@keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+/* GLOBAL BUTTONS */
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), #0088ff);
+  color: #030812;
+  padding: 0.85rem 1.85rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 0.94rem;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: var(--glow-subtle);
+  font-family: inherit;
 }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: var(--glow); }
+
+.btn-outline {
+  background: rgba(0, 210, 255, 0.04);
+  color: var(--text);
+  padding: 0.85rem 1.6rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.94rem;
+  border: 1px solid rgba(0, 210, 255, 0.35);
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(0, 210, 255, 0.12);
+  transform: translateY(-3px);
+  box-shadow: var(--glow-subtle);
+}
+
+/* HERO SECTION */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 7.5rem 3.5rem 4rem;
+  max-width: 1260px;
+  margin: 0 auto;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.95fr;
+  gap: 3.5rem;
+  align-items: center;
+  width: 100%;
+}
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--emerald-soft);
+  border: 1px solid rgba(0, 230, 118, 0.4);
+  border-radius: 100px;
+  padding: 0.38rem 1.15rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--emerald);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 1.3rem;
+}
+.hero-tag::before {
+  content: '';
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--emerald);
+  box-shadow: 0 0 10px var(--emerald);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(1.45); } }
+
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.4rem, 4.8vw, 4.1rem);
+  font-weight: 800;
+  line-height: 1.08;
+  margin-bottom: 0.85rem;
+}
+html[lang="ar"] .hero h1 { font-family: 'Cairo', sans-serif; line-height: 1.22; }
+.gradient-text {
+  background: linear-gradient(90deg, #ffffff 0%, var(--accent) 55%, #00e676 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-sub {
+  font-size: 1.15rem;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 1.15rem;
+}
+.hero-desc {
+  font-size: 1rem;
+  color: rgba(240, 246, 255, 0.82);
+  margin-bottom: 2.1rem;
+  max-width: 610px;
+  line-height: 1.8;
+}
+.hero-btns {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+/* INTERACTIVE SOC TERMINAL WIDGET */
+.terminal-card {
+  background: linear-gradient(180deg, rgba(12, 27, 56, 0.9), rgba(6, 13, 28, 0.95));
+  border: 1px solid var(--border-strong);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), var(--glow-subtle);
+}
+.terminal-header {
+  background: rgba(3, 8, 18, 0.95);
+  padding: 0.75rem 1.2rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.terminal-dots { display: flex; gap: 7px; }
+.dot { width: 11px; height: 11px; border-radius: 50%; }
+.dot-r { background: #ff5f56; }
+.dot-y { background: #ffbd2e; }
+.dot-g { background: #27c93f; }
+
+.terminal-tabs {
+  display: flex;
+  gap: 0.4rem;
+}
+.t-tab {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.73rem;
+  padding: 0.28rem 0.65rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.t-tab:hover { color: var(--text); }
+.t-tab.active {
+  background: rgba(0, 210, 255, 0.14);
+  border-color: rgba(0, 210, 255, 0.35);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.terminal-body {
+  padding: 1.5rem;
+  min-height: 295px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.t-pane { display: none; }
+.t-pane.active { display: block; animation: fadeIn 0.3s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+.t-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px dashed rgba(0, 210, 255, 0.13);
+  font-size: 0.88rem;
+}
+.t-row:last-child { border-bottom: none; }
+.t-key {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.t-val { font-weight: 700; color: var(--text); }
+
+.code-block {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: #cfe4ff;
+  background: rgba(3, 8, 18, 0.7);
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 210, 255, 0.15);
+  direction: ltr;
+  text-align: left;
+}
+.code-block .c-key { color: var(--accent); }
+.code-block .c-str { color: var(--emerald); }
+.code-block .c-num { color: var(--amber); }
+
+.latest-cert-banner {
+  margin-top: 1.1rem;
+  padding: 0.95rem 1.15rem;
+  background: linear-gradient(90deg, rgba(0, 210, 255, 0.1), rgba(0, 230, 118, 0.1));
+  border: 1px solid rgba(0, 230, 118, 0.4);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.lcb-text h4 {
+  font-size: 0.88rem;
+  color: var(--emerald);
+  margin-bottom: 0.1rem;
+}
+.lcb-text p {
+  font-size: 0.78rem;
+  color: var(--text);
+  font-weight: 600;
+}
+.lcb-btn {
+  background: var(--emerald);
+  color: #030812;
+  font-size: 0.76rem;
+  font-weight: 800;
+  padding: 0.42rem 0.85rem;
+  border-radius: 8px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.lcb-btn:hover { transform: scale(1.04); box-shadow: 0 0 14px rgba(0, 230, 118, 0.4); }
+
+/* SECTIONS GENERAL */
+section {
+  position: relative;
+  z-index: 1;
+  padding: 5.5rem 3.5rem;
+  max-width: 1260px;
+  margin: 0 auto;
+}
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2.8rem;
+}
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  display: block;
+}
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.85rem, 3.2vw, 2.55rem);
+  font-weight: 800;
+}
+html[lang="ar"] .section-title { font-family: 'Cairo', sans-serif; }
+
+/* ABOUT & TELEMETRY BENTO */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 2.5rem;
+  align-items: stretch;
+}
+.about-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2.2rem;
+}
+.about-card p {
+  color: rgba(240, 246, 255, 0.86);
+  margin-bottom: 1.1rem;
+  font-size: 0.98rem;
+}
+.career-obj {
+  margin-top: 1.4rem;
+  padding: 1.2rem 1.4rem;
+  background: rgba(0, 210, 255, 0.06);
+  border-inline-start: 4px solid var(--accent);
+  border-radius: 10px;
+}
+.career-obj h3 {
+  color: var(--accent);
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.15rem;
+}
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.6rem 1.1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.3s;
+}
+.stat-card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-4px);
+  box-shadow: var(--glow-subtle);
+}
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.45rem;
+  font-weight: 600;
+}
+
+/* SKILLS MATRIX WITH PROFICIENCY BARS */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+  gap: 1.5rem;
+}
+.skill-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.skill-card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-5px);
+  box-shadow: var(--glow-subtle);
+}
+.skill-head {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+.skill-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(0, 210, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+.skill-category {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+html[lang="ar"] .skill-category { font-family: 'Cairo', sans-serif; }
+
+.proficiency-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 100px;
+  overflow: hidden;
+  margin-bottom: 1.2rem;
+}
+.proficiency-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--emerald));
+  border-radius: 100px;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+.tag {
+  background: rgba(0, 210, 255, 0.06);
+  border: 1px solid rgba(0, 210, 255, 0.2);
+  border-radius: 8px;
+  padding: 0.3rem 0.72rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(240, 246, 255, 0.9);
+  transition: all 0.2s;
+}
+.tag:hover {
+  background: rgba(0, 210, 255, 0.16);
+  border-color: var(--accent);
+}
+.tag.core {
+  background: var(--emerald-soft);
+  border-color: rgba(0, 230, 118, 0.45);
+  color: #b9f6ca;
+  font-weight: 700;
+}
+
+/* PROJECTS SHOWCASE */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.8rem;
+}
+.project-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.1rem;
+  transition: all 0.35s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.project-card.flagship {
+  grid-column: 1 / -1;
+  background: linear-gradient(155deg, rgba(12, 30, 62, 0.92), rgba(8, 18, 38, 0.88));
+  border-color: rgba(0, 210, 255, 0.45);
+}
+.project-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-5px);
+  box-shadow: var(--glow-subtle);
+}
+.project-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.1rem;
+  flex-wrap: wrap;
+}
+.project-title-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.project-icon {
+  width: 54px; height: 54px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(0, 210, 255, 0.35);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.65rem;
+  flex-shrink: 0;
+}
+.project-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.32rem;
+  font-weight: 800;
+}
+html[lang="ar"] .project-title { font-family: 'Cairo', sans-serif; }
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 0.35rem;
+}
+.project-badge {
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(0, 210, 255, 0.1);
+  border: 1px solid rgba(0, 210, 255, 0.25);
+  border-radius: 6px;
+  padding: 0.16rem 0.58rem;
+  font-size: 0.73rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+.project-desc {
+  font-size: 0.95rem;
+  color: rgba(240, 246, 255, 0.85);
+  margin-bottom: 1.2rem;
+}
+
+/* PIPELINE DIAGRAM FOR FLAGSHIP PROJECT */
+.pipeline-box {
+  background: rgba(3, 8, 18, 0.65);
+  border: 1px solid rgba(0, 210, 255, 0.2);
+  border-radius: 12px;
+  padding: 0.95rem 1.2rem;
+  margin-bottom: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.76rem;
+  direction: ltr;
+}
+.pipe-step {
+  background: rgba(0, 210, 255, 0.1);
+  border: 1px solid rgba(0, 210, 255, 0.28);
+  color: var(--text);
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+}
+.pipe-step.ai { border-color: var(--emerald); color: var(--emerald); background: var(--emerald-soft); }
+.pipe-arrow { color: var(--accent); font-weight: 700; }
+
+.project-features {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+.project-features li {
+  font-size: 0.88rem;
+  color: rgba(240, 246, 255, 0.78);
+  padding: 0.28rem 0;
+  padding-inline-start: 1.35rem;
+  position: relative;
+}
+.project-features li::before {
+  content: '▹';
+  position: absolute;
+  inset-inline-start: 0;
+  color: var(--accent);
+  font-weight: 800;
+}
+
+/* CREDENTIALS VAULT (SEARCH + FILTERS) */
+.vault-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.cert-filters {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  background: rgba(8, 18, 38, 0.9);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 0.5rem 1.1rem;
+  border-radius: 100px;
+  font-size: 0.83rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s;
+  font-family: inherit;
+}
+.filter-btn:hover, .filter-btn.active {
+  background: rgba(0, 210, 255, 0.16);
+  border-color: var(--accent);
+  color: var(--text);
+  box-shadow: var(--glow-subtle);
+}
+.cert-search {
+  background: rgba(8, 18, 38, 0.9);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.55rem 1.1rem;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  min-width: 250px;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.25s;
+}
+.cert-search:focus { border-color: var(--accent); box-shadow: var(--glow-subtle); }
+
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.3rem;
+}
+.cert-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.55rem;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cert-card.ccna-featured {
+  border-color: rgba(0, 230, 118, 0.55);
+  background: linear-gradient(145deg, rgba(6, 32, 46, 0.92), rgba(8, 18, 38, 0.9));
+  box-shadow: 0 0 22px rgba(0, 230, 118, 0.12);
+}
+.cert-card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-4px);
+  box-shadow: var(--glow-subtle);
+}
+.cert-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+}
+.cert-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.69rem;
+  padding: 0.16rem 0.58rem;
+  border-radius: 6px;
+  background: rgba(0, 210, 255, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(0, 210, 255, 0.22);
+}
+.cert-tag.emerald {
+  background: var(--emerald-soft);
+  color: var(--emerald);
+  border-color: rgba(0, 230, 118, 0.4);
+  font-weight: 700;
+}
+.cert-name {
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--text);
+  line-height: 1.4;
+  margin-bottom: 0.3rem;
+}
+.cert-issuer {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+.cert-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+.cert-date { font-size: 0.78rem; color: var(--muted); }
+.cert-verify {
+  font-size: 0.8rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+}
+.cert-verify:hover { text-decoration: underline; }
+
+/* DUAL TIMELINE */
+.dual-timeline {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+}
+.timeline-col h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.25rem;
+  color: var(--accent);
+  margin-bottom: 1.7rem;
+}
+html[lang="ar"] .timeline-col h3 { font-family: 'Cairo', sans-serif; }
+.timeline {
+  position: relative;
+  padding-inline-start: 1.75rem;
+  border-inline-start: 2px solid rgba(0, 210, 255, 0.22);
+}
+.timeline-item {
+  padding-bottom: 2.1rem;
+  position: relative;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: -2.18rem;
+  top: 6px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+}
+.tl-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.76rem;
+  color: var(--accent);
+  font-weight: 700;
+  background: rgba(0, 210, 255, 0.08);
+  padding: 0.16rem 0.68rem;
+  border-radius: 100px;
+  display: inline-block;
+  margin-bottom: 0.4rem;
+}
+.tl-title {
+  font-weight: 800;
+  font-size: 1.06rem;
+  color: var(--text);
+}
+.tl-badge {
+  display: inline-block;
+  border: 1px solid rgba(0, 210, 255, 0.35);
+  border-radius: 100px;
+  padding: 0.08rem 0.55rem;
+  font-size: 0.7rem;
+  color: var(--accent);
+  margin-inline-start: 0.4rem;
+}
+.tl-org {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+.tl-desc {
+  font-size: 0.88rem;
+  color: rgba(240, 246, 255, 0.8);
+}
+
+/* CONTACT HUB */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 3rem;
+  align-items: center;
+}
+.contact-info { display: flex; flex-direction: column; gap: 0.85rem; }
+.contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.05rem 1.35rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.25s;
+}
+.contact-item:hover {
+  border-color: var(--accent);
+  transform: translateX(5px);
+  box-shadow: var(--glow-subtle);
+}
+html[lang="ar"] .contact-item:hover { transform: translateX(-5px); }
+.contact-item-left { display: flex; align-items: center; gap: 1rem; }
+.contact-icon {
+  width: 42px; height: 42px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(0, 210, 255, 0.25);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.contact-label { font-size: 0.74rem; color: var(--muted); text-transform: uppercase; }
+.contact-value { font-size: 0.94rem; font-weight: 700; }
+
+.copy-pill {
+  background: rgba(0, 210, 255, 0.1);
+  border: 1px solid rgba(0, 210, 255, 0.3);
+  color: var(--accent);
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 0.3rem 0.7rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.copy-pill:hover { background: var(--accent); color: #030812; }
+
+.secure-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.7rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.secure-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--emerald));
+}
+.secure-box h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+html[lang="ar"] .secure-box h3 { font-family: 'Cairo', sans-serif; }
+.secure-box p { color: var(--muted); margin-bottom: 1.8rem; font-size: 0.95rem; }
+.secure-box .btn-primary, .secure-box .btn-outline {
+  width: 100%;
+  margin-bottom: 0.9rem;
+  padding: 0.95rem;
+}
+
+/* TOAST NOTIFICATION */
+#toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--emerald);
+  color: #030812;
+  font-weight: 800;
+  padding: 0.75rem 1.3rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(15px);
+  transition: all 0.3s ease;
+  z-index: 3000;
+}
+#toast.show { opacity: 1; transform: translateY(0); }
+
+footer {
+  text-align: center;
+  padding: 2.4rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.86rem;
+  background: rgba(3, 8, 18, 0.92);
+}
+
+/* REVEAL ANIMATION */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: all 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* RESPONSIVE */
-@media(max-width:992px){
-  .contact-grid{grid-template-columns:1fr}
+@media (max-width: 992px) {
+  .hero-grid, .about-grid, .dual-timeline, .contact-grid, .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  nav { padding: 0.95rem 1.5rem; }
+  section, .hero { padding: 4.5rem 1.5rem; }
+  .hero { padding-top: 6.5rem; }
 }
-@media(max-width:768px){
-  nav{padding:1rem 1.5rem}
-  .nav-links{display:none}
-  section{padding:4.5rem 1.5rem}
-  .hero{padding:6.5rem 1.5rem 4rem}
-  .about-grid{grid-template-columns:1fr;gap:2.5rem}
-  .projects-grid{grid-template-columns:1fr}
-  .hero h1{font-size:2.8rem}
+@media (max-width: 768px) {
+  .mobile-toggle { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: rgba(3, 8, 18, 0.98);
+    flex-direction: column;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    gap: 1.1rem;
+  }
+  .nav-links.open { display: flex; }
+  .cert-search { width: 100%; }
 }
 </style>
 </head>
 <body>
 
-<div class="cyber-scanlines"></div>
+<div id="scrollProgress"></div>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div id="toast">✓ Email copied to clipboard!</div>
 
 <nav>
-  <div class="nav-logo">M·S·KULLAB</div>
-  <ul class="nav-links">
-    <li><a href="#about"><span class="en">About</span><span class="ar">عني</span></a></li>
-    <li><a href="#skills"><span class="en">Skills</span><span class="ar">المهارات</span></a></li>
-    <li><a href="#experience"><span class="en">Experience</span><span class="ar">الخبرة</span></a></li>
-    <li><a href="#certifications"><span class="en">Credentials</span><span class="ar">الشهادات</span></a></li>
-    <li><a href="#projects"><span class="en">Projects</span><span class="ar">المشاريع</span></a></li>
-    <li><a href="#contact"><span class="en">Contact</span><span class="ar">تواصل</span></a></li>
+  <a href="#" class="nav-brand">
+    <div class="nav-logo-badge">MK</div>
+    <div class="nav-logo-text">M·S·<span>KULLAB</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about" class="nav-item" onclick="closeMenu()"><span class="en">About</span><span class="ar">عني</span></a></li>
+    <li><a href="#skills" class="nav-item" onclick="closeMenu()"><span class="en">Skills</span><span class="ar">المهارات</span></a></li>
+    <li><a href="#projects" class="nav-item" onclick="closeMenu()"><span class="en">Projects</span><span class="ar">المشاريع</span></a></li>
+    <li><a href="#certifications" class="nav-item" onclick="closeMenu()"><span class="en">Credentials</span><span class="ar">الشهادات</span></a></li>
+    <li><a href="#experience" class="nav-item" onclick="closeMenu()"><span class="en">Experience</span><span class="ar">الخبرة</span></a></li>
+    <li><a href="#contact" class="nav-item" onclick="closeMenu()"><span class="en">Contact</span><span class="ar">تواصل</span></a></li>
   </ul>
   <div class="nav-actions">
     <button class="lang-btn" onclick="toggleLang()" id="langBtn">عربي</button>
     <a href="https://mahmoud-kullab.github.io/CV.pdf" target="_blank" class="cv-btn">
-      <span class="en">📄 View CV</span>
+      <span class="en">📄 CV</span>
       <span class="ar">📄 السيرة الذاتية</span>
     </a>
+    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
   </div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="orb orb1"></div>
-  <div class="orb orb2"></div>
-  <div class="hero-content">
-    <div class="hero-tag">
-      <span class="en">System Status: Online & Secure</span>
-      <span class="ar">حالة النظام: متصل ومحمي</span>
-    </div>
-    <h1>
-      <span class="en">Mahmoud<br><span>Sami Kullab</span></span>
-      <span class="ar">محمود<br><span>سامي كلاب</span></span>
-    </h1>
-    <p class="hero-sub">
-      <span class="en">ICT Specialist · Cybersecurity Student · Programmer</span>
-      <span class="ar">أخصائي تقنية معلومات · طالب أمن سيبراني · مبرمج</span>
-    </p>
-    <p class="hero-desc">
-      <span class="en">Over 5 years of practical experience securing digital frontiers. Expert in IT support, hardware maintenance, and cybersecurity frameworks. Pursuing a Diploma in Cybersecurity at UCAS.</span>
-      <span class="ar">أكثر من 5 سنوات من الخبرة العملية في تأمين الحدود الرقمية. خبير في الدعم الفني وأطر الأمن السيبراني. أدرس حالياً دبلوم الأمن السيبراني في الكلية الجامعية.</span>
-    </p>
-    
-    <!-- CTA BUTTONS -->
-    <div class="hero-btns">
-      <a href="#contact" class="btn-primary">
-        <span class="en">Hire Me</span><span class="ar">وظفني</span>
-      </a>
-      <a href="https://mahmoud-kullab.github.io/CV.pdf" target="_blank" class="btn-outline">
-        <span class="en">📄 Download CV</span><span class="ar">📄 تحميل السيرة الذاتية</span>
-      </a>
-      <a href="#projects" class="btn-outline">
-        <span class="en">View Projects</span><span class="ar">عرض المشاريع</span>
-      </a>
-      <a href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank" class="btn-outline" style="border-color: rgba(0, 200, 255, 0.8);">
-        <span class="en">📁 View Drive Archive</span><span class="ar">📁 تصفح أرشيف الشهادات</span>
-      </a>
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-tag">
+        <span class="en">Cybersecurity Graduate · Cisco CCNA Certified Track</span>
+        <span class="ar">خريج أمن المعلومات السيبراني · معتمد من أكاديمية سيسكو CCNA</span>
+      </div>
+      <h1>
+        <span class="en">Mahmoud<br><span class="gradient-text">Sami Kullab</span></span>
+        <span class="ar">محمود<br><span class="gradient-text">سامي كلاب</span></span>
+      </h1>
+      <p class="hero-sub">
+        <span class="en">Cybersecurity Specialist · Network Technician (CCNA) · ICT Developer</span>
+        <span class="ar">أخصائي أمن سيبراني · فني شبكات (CCNA) · مطور تقنية معلومات</span>
+      </p>
+      <p class="hero-desc">
+        <span class="en">Over 5 years of hands-on experience in IT technical support, network configuration, and computer maintenance. Co-creator of an AI-Powered NIDS/IPS system and developer of the 100-tool ProLaptop Ultimate v3.1 framework.</span>
+        <span class="ar">أكثر من 5 سنوات من الخبرة العملية في الدعم الفني، إعداد الشبكات، وصيانة الأنظمة. مشارك في هندسة نظام كشف ومنع التسلل بالذكاء الاصطناعي (NIDS/IPS) ومطور إطار الصيانة الشامل ProLaptop Ultimate v3.1.</span>
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">
+          <span class="en">⚡ Hire Me</span><span class="ar">⚡ وظفني الآن</span>
+        </a>
+        <a href="https://mahmoud-kullab.github.io/CV.pdf" target="_blank" class="btn-outline">
+          <span class="en">📄 Download CV</span><span class="ar">📄 تحميل السيرة الذاتية</span>
+        </a>
+        <a href="#projects" class="btn-outline">
+          <span class="en">🛡️ Featured Projects</span><span class="ar">🛡️ أبرز المشاريع</span>
+        </a>
+        <a href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank" class="btn-outline">
+          <span class="en">📁 Drive Archive</span><span class="ar">📁 أرشيف الشهادات</span>
+        </a>
+      </div>
     </div>
 
+    <!-- INTERACTIVE MULTI-TAB SOC TERMINAL -->
+    <div class="terminal-card">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <span class="dot dot-r"></span>
+          <span class="dot dot-y"></span>
+          <span class="dot dot-g"></span>
+        </div>
+        <div class="terminal-tabs">
+          <button class="t-tab active" onclick="switchTab('tab-status', this)">status.sh</button>
+          <button class="t-tab" onclick="switchTab('tab-ccna', this)">ccna_badge.json</button>
+          <button class="t-tab" onclick="switchTab('tab-nids', this)">nids_ai.py</button>
+        </div>
+      </div>
+
+      <div class="terminal-body">
+        <!-- Tab 1: Status -->
+        <div id="tab-status" class="t-pane active">
+          <div class="t-row">
+            <span class="t-key"><span class="en">ACADEMIC CREDENTIAL</span><span class="ar">المؤهل الأكاديمي</span></span>
+            <span class="t-val"><span class="en">Diploma in Cybersecurity (UCAS)</span><span class="ar">دبلوم الأمن السيبراني (UCAS)</span></span>
+          </div>
+          <div class="t-row">
+            <span class="t-key"><span class="en">FIELD EXPERIENCE</span><span class="ar">الخبرة الميدانية</span></span>
+            <span class="t-val"><span class="en">5+ Years (IT Support & Networks)</span><span class="ar">+5 سنوات (دعم فني وشبكات)</span></span>
+          </div>
+          <div class="t-row">
+            <span class="t-key"><span class="en">CURRENT ROLE</span><span class="ar">الدور الحالي</span></span>
+            <span class="t-val"><span class="en">ICT Specialist (PRCS) & AFOQ Mentor</span><span class="ar">أخصائي ICT بالهلال الأحمر وموجه بـ أفق</span></span>
+          </div>
+          <div class="t-row">
+            <span class="t-key"><span class="en">CORE STACK</span><span class="ar">الترسانة التقنية</span></span>
+            <span class="t-val" style="color:var(--accent)">Cisco · Linux · PowerShell · Java</span>
+          </div>
+        </div>
+
+        <!-- Tab 2: CCNA JSON -->
+        <div id="tab-ccna" class="t-pane">
+          <div class="code-block">
+{<br>
+&nbsp;&nbsp;<span class="c-key">"credential"</span>: <span class="c-str">"CCNA: Introduction to Networks"</span>,<br>
+&nbsp;&nbsp;<span class="c-key">"issuer"</span>: <span class="c-str">"Cisco Networking Academy — UCAS"</span>,<br>
+&nbsp;&nbsp;<span class="c-key">"issued_date"</span>: <span class="c-str">"2026-10-25"</span>,<br>
+&nbsp;&nbsp;<span class="c-key">"cert_id"</span>: <span class="c-str">"2ad6c4b5-a762-4912-b245-695d6203a854"</span>,<br>
+&nbsp;&nbsp;<span class="c-key">"skills"</span>: [<span class="c-str">"Routing"</span>, <span class="c-str">"Switching"</span>, <span class="c-str">"IPv4/IPv6"</span>, <span class="c-str">"NetSec"</span>]<br>
+}
+          </div>
+        </div>
+
+        <!-- Tab 3: AI NIDS Capstone -->
+        <div id="tab-nids" class="t-pane">
+          <div class="code-block">
+<span class="c-key"># AI-Powered NIDS/IPS Capstone Metrics</span><br>
+classifier = <span class="c-str">"XGBoost"</span> <span class="c-num"># Accuracy: 86.82%</span><br>
+zero_day = [<span class="c-str">"Autoencoder"</span>, <span class="c-str">"IsolationForest"</span>]<br>
+ae_recall = <span class="c-num">0.901</span> <span class="c-num"># ROC-AUC: 0.960</span><br>
+mitigation = <span class="c-str">"Live Scapy -> FastAPI -> iptables DROP"</span>
+          </div>
+        </div>
+
+        <!-- Always-visible Latest Badge Banner -->
+        <div class="latest-cert-banner">
+          <div class="lcb-text">
+            <h4><span class="en">★ NEW VERIFIED CISCO BADGE</span><span class="ar">★ أحدث شارة معتمدة من سيسكو</span></h4>
+            <p>CCNA: Introduction to Networks (Oct 2026)</p>
+          </div>
+          <a href="https://www.credly.com/badges/878aa9ff-d2a1-4dcc-b295-3363b6825271/public_url" target="_blank" class="lcb-btn">
+            <span class="en">Verify Credly ↗</span><span class="ar">تحقق عبر Credly ↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- ABOUT -->
 <section id="about" class="reveal">
-  <div class="section-label"><span class="en">01 // Identity</span><span class="ar">01 // الهوية</span></div>
-  <div class="section-title"><span class="en">About Me</span><span class="ar">من أنا</span></div>
+  <div class="section-header">
+    <div>
+      <span class="section-label"><span class="en">01 // Identity & Telemetry</span><span class="ar">01 // الهوية والمؤشرات الرقمية</span></span>
+      <h2 class="section-title"><span class="en">About Me</span><span class="ar">من أنا</span></h2>
+    </div>
+  </div>
   <div class="about-grid">
-    <div class="about-text">
-      <p class="en">I'm a dedicated ICT Specialist and Cybersecurity student based in Khan Younis, Gaza Strip, with over 5 years of practical experience in IT support, hardware/software maintenance, and secure networking.</p>
-      <p class="ar">أنا أخصائي تقنية معلومات وطالب أمن سيبراني من خان يونس، قطاع غزة، أمتلك أكثر من 5 سنوات من الخبرة العملية في دعم تكنولوجيا المعلومات، صيانة الأجهزة والبرمجيات، والشبكات الآمنة.</p>
+    <div class="about-card">
+      <p class="en">I am an ICT Specialist and Cybersecurity graduate (Diploma from UCAS) based in Khan Younis, Gaza Strip, bringing over 5 years of practical experience in IT technical support, hardware/software diagnostics, and network engineering.</p>
+      <p class="ar">أنا أخصائي تقنية معلومات وخريج تخصص أمن المعلومات السيبراني من الكلية الجامعية للعلوم التطبيقية (UCAS) في خان يونس، قطاع غزة، أمتلك أكثر من 5 سنوات من الخبرة العملية في الدعم الفني، صيانة الحواسيب والهواتف الذكية، وهندسة الشبكات.</p>
       
-      <p class="en">Currently volunteering with the Palestinian Red Crescent Society (PRCS) as an ICT Specialist while pursuing my Diploma in Cybersecurity at UCAS. I have built real-world cybersecurity frameworks like ProLaptop Ultimate using PowerShell.</p>
-      <p class="ar">أتطوع حالياً كأخصائي تقنية معلومات في جمعية الهلال الأحمر الفلسطيني تزامناً مع دراستي. أقوم بتطوير أطر عمل تقنية حقيقية مثل ProLaptop Ultimate باستخدام PowerShell.</p>
+      <p class="en">Currently volunteering as an ICT Specialist with the Palestinian Red Crescent Society (PRCS) and serving as a Technical Mentor with the Ofuq (AFOQ) Engineering Community & TALENT platform. I specialize in turning complex security & maintenance workflows into automated systems.</p>
+      <p class="ar">أتطوع حالياً كأخصائي تقنية معلومات في جمعية الهلال الأحمر الفلسطيني، وأعمل كموجه تقني لدعم الطلاب وتنمية مهاراتهم ضمن فريق ومجتمع أفق الهندسي (AFOQ) ومنصة TALENT للتعليم والتدريب.</p>
 
-      <!-- CAREER OBJECTIVE -->
       <div class="career-obj">
         <h3 class="en">Career Objective</h3>
         <h3 class="ar">الهدف المهني</h3>
-        <p class="en" style="margin-bottom: 0;">Seeking opportunities in Cybersecurity, IT Support, and Network Administration while continuing professional development in offensive security and system administration.</p>
-        <p class="ar" style="margin-bottom: 0;">أبحث عن فرص مهنية في مجالات الأمن السيبراني، الدعم الفني، وإدارة الشبكات، مع الاستمرار في التطوير المهني في مجالات الأمن الهجومي وإدارة الأنظمة.</p>
+        <p class="en" style="margin-bottom:0">Seeking impactful roles in Cybersecurity (SOC / Network Security), Network Administration (CCNA), and IT Support where I can deploy intelligent defense mechanisms and maintain resilient IT infrastructures.</p>
+        <p class="ar" style="margin-bottom:0">أتطلع للعمل في مجالات الأمن السيبراني، إدارة وهندسة الشبكات، والدعم الفني المتقدم لتوظيف مهاراتي في حماية البنية التحتية الرقمية وضمان استمرارية الأنظمة بكفاءة عالية.</p>
       </div>
-
     </div>
+
     <div class="stats-grid">
       <div class="stat-card">
         <span class="stat-num">5+</span>
-        <div class="stat-label"><span class="en">Years Experience</span><span class="ar">سنوات خبرة</span></div>
+        <div class="stat-label"><span class="en">Years Field Experience</span><span class="ar">سنوات خبرة عملية</span></div>
       </div>
       <div class="stat-card">
-        <span class="stat-num">17+</span>
-        <div class="stat-label"><span class="en">Verified Credentials</span><span class="ar">شهادة/إنجاز معتمد</span></div>
+        <span class="stat-num">18+</span>
+        <div class="stat-label"><span class="en">Verified Credentials</span><span class="ar">شهادة وشارة دولية</span></div>
       </div>
       <div class="stat-card">
         <span class="stat-num">100+</span>
-        <div class="stat-label"><span class="en">Tools Coded</span><span class="ar">أداة مبرمجة</span></div>
+        <div class="stat-label"><span class="en">Tools Engineered</span><span class="ar">أداة برمجية مطورة</span></div>
       </div>
       <div class="stat-card">
-        <span class="stat-num">UCAS</span>
-        <div class="stat-label"><span class="en">CyberSec Diploma</span><span class="ar">دبلوم تخصصي</span></div>
+        <span class="stat-num">86.8%</span>
+        <div class="stat-label"><span class="en">AI NIDS Accuracy</span><span class="ar">دقة نظام كشف التسلل</span></div>
       </div>
     </div>
   </div>
@@ -324,381 +1276,812 @@ footer a:hover{text-decoration:underline;text-shadow:var(--glow-subtle)}
 
 <!-- SKILLS -->
 <section id="skills" class="reveal">
-  <div class="section-label"><span class="en">02 // Capabilities</span><span class="ar">02 // القدرات</span></div>
-  <div class="section-title"><span class="en">Core Expertise</span><span class="ar">التخصص التقني</span></div>
-  
+  <div class="section-header">
+    <div>
+      <span class="section-label"><span class="en">02 // Technical Matrix</span><span class="ar">02 // المصفوفة التقنية</span></span>
+      <h2 class="section-title"><span class="en">Core Competencies</span><span class="ar">التخصصات والمهارات</span></h2>
+    </div>
+  </div>
+
   <div class="skills-grid">
+    <!-- Card 1: Networking -->
     <div class="skill-card">
-      <div class="skill-category"><span class="en">Advanced</span><span class="ar">مستوى متقدم</span></div>
-      <div class="skill-tags">
-        <span class="tag">IT Support</span><span class="tag">Hardware Maintenance</span><span class="tag">Software Diagnostics</span><span class="tag">Windows Administration</span><span class="tag">PowerShell & BAT</span>
+      <div>
+        <div class="skill-head">
+          <div class="skill-icon">🌐</div>
+          <div class="skill-category"><span class="en">Network Engineering (Cisco)</span><span class="ar">هندسة الشبكات وسيسكو</span></div>
+        </div>
+        <div class="proficiency-bar"><div class="proficiency-fill" style="width: 92%"></div></div>
+        <div class="skill-tags">
+          <span class="tag core">CCNA: ITN Certified</span>
+          <span class="tag">Router & Switch Config</span>
+          <span class="tag">IPv4 / IPv6 Subnetting</span>
+          <span class="tag">OSI & TCP/IP Models</span>
+          <span class="tag">Ethernet & VLANs</span>
+          <span class="tag">Cisco Packet Tracer</span>
+          <span class="tag">Connectivity Troubleshooting</span>
+        </div>
       </div>
     </div>
+
+    <!-- Card 2: Cybersecurity -->
     <div class="skill-card">
-      <div class="skill-category"><span class="en">Intermediate</span><span class="ar">مستوى متوسط</span></div>
-      <div class="skill-tags">
-        <span class="tag">Cybersecurity</span><span class="tag">Offensive Security</span><span class="tag">IPv4/IPv6 Networking</span><span class="tag">Routing</span><span class="tag">Linux Fundamentals</span><span class="tag">Java OOP</span>
+      <div>
+        <div class="skill-head">
+          <div class="skill-icon">🛡️</div>
+          <div class="skill-category"><span class="en">Cybersecurity & Defense</span><span class="ar">الأمن السيبراني والدفاع</span></div>
+        </div>
+        <div class="proficiency-bar"><div class="proficiency-fill" style="width: 90%"></div></div>
+        <div class="skill-tags">
+          <span class="tag core">AI NIDS / IPS</span>
+          <span class="tag">Zero-Day Anomaly Hunting</span>
+          <span class="tag">Active & Passive Recon</span>
+          <span class="tag">Nmap Host Discovery</span>
+          <span class="tag">Linux Fundamentals</span>
+          <span class="tag">Firewall (iptables)</span>
+          <span class="tag">Live Packet Capture (Scapy)</span>
+        </div>
       </div>
     </div>
+
+    <!-- Card 3: IT Support -->
     <div class="skill-card">
-      <div class="skill-category"><span class="en">Technologies & Tools</span><span class="ar">التقنيات والأدوات</span></div>
-      <div class="skill-tags">
-        <span class="tag">Windows</span><span class="tag">Linux</span><span class="tag">CMD</span><span class="tag">Git & GitHub</span><span class="tag">Cisco Packet Tracer</span><span class="tag">Nmap</span><span class="tag">MS Office</span><span class="tag">Canva Pro</span>
+      <div>
+        <div class="skill-head">
+          <div class="skill-icon">💻</div>
+          <div class="skill-category"><span class="en">IT Support & Systems Admin</span><span class="ar">الدعم الفني وإدارة الأنظمة</span></div>
+        </div>
+        <div class="proficiency-bar"><div class="proficiency-fill" style="width: 96%"></div></div>
+        <div class="skill-tags">
+          <span class="tag core">Hardware Maintenance</span>
+          <span class="tag">Software Diagnostics</span>
+          <span class="tag">Windows Administration</span>
+          <span class="tag">WinPE Offline Recovery</span>
+          <span class="tag">PowerShell & BAT Scripting</span>
+          <span class="tag">Remote & Onsite Help Desk</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4: AI, Dev & Business -->
+    <div class="skill-card">
+      <div>
+        <div class="skill-head">
+          <div class="skill-icon">🧠</div>
+          <div class="skill-category"><span class="en">AI, Programming & Business</span><span class="ar">الذكاء الاصطناعي والبرمجة</span></div>
+        </div>
+        <div class="proficiency-bar"><div class="proficiency-fill" style="width: 85%"></div></div>
+        <div class="skill-tags">
+          <span class="tag core">NVIDIA Jetson Nano AI</span>
+          <span class="tag">XGBoost & Autoencoders</span>
+          <span class="tag">Java (OOP, CRUD)</span>
+          <span class="tag">Git & GitHub</span>
+          <span class="tag">Business Email (HP LIFE)</span>
+          <span class="tag">ICDL & MS Office Suite</span>
+          <span class="tag">Canva Pro Design</span>
+        </div>
       </div>
     </div>
   </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience" class="reveal">
-  <div class="section-label"><span class="en">03 // Execution Logs</span><span class="ar">03 // سجلات التنفيذ</span></div>
-  <div class="section-title"><span class="en">Work History</span><span class="ar">تاريخ العمل</span></div>
-  <div class="timeline">
-
-    <div class="timeline-item">
-      <div class="tl-date">Jan 2024 – Present</div>
-      <div class="tl-title">
-        <span class="en">ICT Specialist</span><span class="ar">أخصائي تقنية معلومات</span>
-        <span class="tl-badge"><span class="en">Volunteer</span><span class="ar">تطوع</span></span>
-      </div>
-      <div class="tl-org"><span class="en">Palestinian Red Crescent Society (PRCS) · Khan Younis</span><span class="ar">جمعية الهلال الأحمر الفلسطيني · خان يونس</span></div>
-      <div class="tl-desc en">Provided direct and remote technical support. Maintained IT infrastructure ensuring continuity of operations. Troubleshooted hardware/software malfunctions and assisted in implementing information security procedures to protect institutional data.</div>
-      <div class="tl-desc ar">تقديم الدعم الفني المباشر وعن بعد. صيانة البنية التحتية لضمان استمرارية العمل. تشخيص أعطال الأجهزة والبرامج والمساعدة في تطبيق إجراءات أمن المعلومات لحماية بيانات المؤسسة.</div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="tl-date">Jan 2024 – Present</div>
-      <div class="tl-title">
-        <span class="en">Data Entry Clerk</span><span class="ar">موظف إدخال بيانات</span>
-        <span class="tl-badge"><span class="en">Volunteer</span><span class="ar">تطوع</span></span>
-      </div>
-      <div class="tl-org"><span class="en">Palestinian Red Crescent Society (PRCS) · Khan Younis</span><span class="ar">جمعية الهلال الأحمر الفلسطيني · خان يونس</span></div>
-      <div class="tl-desc en">Accurately entered and managed databases. Organized digital records for integrity and compliance. Conducted data verification and quality checks to minimize errors.</div>
-      <div class="tl-desc ar">إدخال وإدارة قواعد البيانات بدقة. تنظيم السجلات الرقمية لضمان سلامتها. إجراء عمليات التحقق من البيانات وفحوصات الجودة لتقليل الأخطاء.</div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="tl-date">Jan 2019 – Present</div>
-      <div class="tl-title">
-        <span class="en">IT Technician & Programmer</span><span class="ar">فني تقنية معلومات ومبرمج</span>
-        <span class="tl-badge"><span class="en">Self-Employed</span><span class="ar">عمل حر</span></span>
-      </div>
-      <div class="tl-org"><span class="en">Pro Laptop · Khan Younis</span><span class="ar">برو لاب توب · خان يونس</span></div>
-      <div class="tl-desc en">Advanced maintenance & programming for smartphones and PCs. Diagnosed client hardware/software issues. Built the ProLaptop Ultimate v3.1 PowerShell framework. Designed promotional materials.</div>
-      <div class="tl-desc ar">صيانة وبرمجة متقدمة للهواتف والحواسيب. تشخيص أعطال أجهزة العملاء. بناء إطار ProLaptop Ultimate v3.1 باستخدام PowerShell. تصميم المواد الترويجية.</div>
-    </div>
-
-  </div>
-</section>
-
-<!-- CERTIFICATIONS WITH DYNAMIC SHOW/HIDE -->
-<section id="certifications" class="reveal">
-  <div class="section-label"><span class="en">04 // Verification</span><span class="ar">04 // المصادقة</span></div>
-  <div class="section-title"><span class="en">Top Certifications & Badges</span><span class="ar">أبرز الشهادات والإنجازات</span></div>
-
-  <!-- VISIBLE CERTS (Top 6 aligned perfectly in 3 columns) -->
-  <div class="certs-grid">
-    <!-- 1. NVIDIA AI -->
-    <div class="cert-card">
-      <div class="cert-name">Getting Started with AI on Jetson Nano</div>
-      <div class="cert-issuer">NVIDIA</div>
-      <div class="cert-date">June 16, 2026</div>
-      <span class="cert-verify" style="color:var(--muted)">✓ Completed</span>
-    </div>
-
-    <!-- 2. Cisco Networking Basics -->
-    <div class="cert-card">
-      <div class="cert-name">Networking Basics</div>
-      <div class="cert-issuer">Cisco Networking Academy</div>
-      <div class="cert-date">May 12, 2026</div>
-      <a class="cert-verify" href="https://www.credly.com/badges/94cda99a-f841-4585-aeb3-8ef137ccfd63/public_url" target="_blank">✓ Verify on Credly</a>
-    </div>
-    
-    <!-- 3. Nmap Live Host Discovery -->
-    <div class="cert-card">
-      <div class="cert-name">Nmap Live Host Discovery (Room)</div>
-      <div class="cert-issuer">TryHackMe</div>
-      <div class="cert-date">May 26, 2026</div>
-      <span class="cert-verify" style="color:var(--muted)">✓ Completed</span>
-    </div>
-
-    <!-- 4. Cisco Packet Tracer (UCAS) -->
-    <div class="cert-card">
-      <div class="cert-name">Getting Started with Packet Tracer (Instructor-Led)</div>
-      <div class="cert-issuer">Cisco Networking Academy — UCAS</div>
-      <div class="cert-date">May 17, 2026</div>
-      <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Certificate</a>
-    </div>
-
-    <!-- 5. ICDL Base Specialization -->
-    <div class="cert-card">
-      <div class="cert-name">ICDL Base Specialization</div>
-      <div class="cert-issuer">Edraak (إدراك)</div>
-      <div class="cert-date">April 2026</div>
-      <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Certificate</a>
-    </div>
-
-    <!-- 6. Linux Fundamentals -->
-    <div class="cert-card">
-      <div class="cert-name">cat linux.txt (Linux Fundamentals)</div>
-      <div class="cert-issuer">TryHackMe</div>
-      <div class="cert-date">January 2026</div>
-      <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Badge</a>
-    </div>
-  </div>
-
-  <!-- HIDDEN CERTS -->
-  <div id="hiddenCerts" class="certs-grid hidden-certs">
-    
-    <div class="cert-card">
-      <div class="cert-name">Business Email</div>
-      <div class="cert-issuer">HP LIFE (HP Foundation)</div>
-      <div class="cert-date">June 17, 2026</div>
-      <span class="cert-verify" style="color:var(--muted)">✓ Completed</span>
-    </div>
-
-    <div class="cert-card">
-      <div class="cert-name">Active Reconnaissance (Room)</div>
-      <div class="cert-issuer">TryHackMe</div>
-      <div class="cert-date">May 26, 2026</div>
-      <span class="cert-verify" style="color:var(--muted)">✓ Completed</span>
-    </div>
-
-    <div class="cert-card">
-      <div class="cert-name">Passive Reconnaissance (Room)</div>
-      <div class="cert-issuer">TryHackMe</div>
-      <div class="cert-date">May 26, 2026</div>
-      <span class="cert-verify" style="color:var(--muted)">✓ Completed</span>
-    </div>
-
-    <div class="cert-card">
-      <div class="cert-name">Offensive Security Intro</div>
-      <div class="cert-issuer">TryHackMe</div>
-      <div class="cert-date">December 2025</div>
-      <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Badge</a>
-    </div>
-    
-    <div class="cert-card">
-      <div class="cert-name">Getting Started with Packet Tracer (Self-Paced)</div>
-      <div class="cert-issuer">Cisco Networking Academy</div>
-      <div class="cert-date">April 18, 2026</div>
-      <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Certificate</a>
-    </div>
-    
-    <div class="cert-card">
-      <div class="cert-name">Introduction to Packet Tracer</div>
-      <div class="cert-issuer">Cisco Networking Academy</div>
-      <div class="cert-date">April 18, 2026</div>
-      <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Certificate</a>
-    </div>
-
-    <div class="cert-card">
-      <div class="cert-name">Computer Essentials</div>
-      <div class="cert-issuer">Edraak - ICDL Base</div>
-      <div class="cert-date">April 2026</div>
-      <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Certificate</a>
-    </div>
-
-    <div class="cert-card">
-      <div class="cert-name">Word Processing</div>
-      <div class="cert-issuer">Edraak - ICDL Base</div>
-      <div class="cert-date">April 2026</div>
-      <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Certificate</a>
-    </div>
-
-    <div class="cert-card">
-      <div class="cert-name">Excel Spreadsheets</div>
-      <div class="cert-issuer">Edraak - ICDL Base</div>
-      <div class="cert-date">April 2026</div>
-      <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Certificate</a>
-    </div>
-
-    <div class="cert-card">
-      <div class="cert-name">Internet & Email Essentials</div>
-      <div class="cert-issuer">Edraak - ICDL Base</div>
-      <div class="cert-date">April 2026</div>
-      <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Certificate</a>
-    </div>
-
-    <div class="cert-card">
-      <div class="cert-name">Canva for Beginners</div>
-      <div class="cert-issuer">Coursera - Freedom Learning Group</div>
-      <div class="cert-date">November 2025</div>
-      <a class="cert-verify" href="https://coursera.org/verify/X6JYWIUJITVX" target="_blank">✓ Verify on Coursera</a>
-    </div>
-
-    <div class="cert-card">
-      <div class="cert-name">Professional Home Electrician Diploma</div>
-      <div class="cert-issuer">Golden House Consulting & Training</div>
-      <div class="cert-date">September 2019 · 80 Hours</div>
-      <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Certificate</a>
-    </div>
-
-  </div>
-
-  <!-- VIEW ALL CERTS BUTTON -->
-  <div style="text-align: center; margin-top: 3.5rem;">
-    <button onclick="toggleCerts()" id="toggleCertsBtn" class="btn-primary" style="padding: 1rem 3rem; font-size: 1.05rem;">
-      <span class="en">⬇ Show All Certificates (17+)</span>
-      <span class="ar">⬇ عرض جميع الشهادات (17+)</span>
-    </button>
-  </div>
-
 </section>
 
 <!-- PROJECTS -->
 <section id="projects" class="reveal">
-  <div class="section-label"><span class="en">05 // System Builds</span><span class="ar">05 // بناء الأنظمة</span></div>
-  <div class="section-title"><span class="en">Key Projects</span><span class="ar">المشاريع البارزة</span></div>
+  <div class="section-header">
+    <div>
+      <span class="section-label"><span class="en">03 // System Builds & Research</span><span class="ar">03 // بناء الأنظمة والمشاريع</span></span>
+      <h2 class="section-title"><span class="en">Featured Projects</span><span class="ar">المشاريع الهندسية والبرمجية</span></h2>
+    </div>
+  </div>
+
   <div class="projects-grid">
 
-    <!-- ProLaptop -->
+    <!-- Flagship Project: AI-Powered NIDS/IPS -->
+    <div class="project-card flagship">
+      <div>
+        <div class="project-header">
+          <div class="project-title-group">
+            <div class="project-icon">🧠</div>
+            <div>
+              <div class="project-title">
+                <span class="en">AI-Powered Network Intrusion Detection & Prevention System (NIDS/IPS)</span>
+                <span class="ar">نظام كشف ومنع التسلل بالذكاء الاصطناعي (AI-Powered NIDS/IPS)</span>
+              </div>
+              <div class="project-tech">
+                <span class="project-badge">XGBoost (86.82%)</span>
+                <span class="project-badge">Deep Autoencoder</span>
+                <span class="project-badge">Isolation Forest</span>
+                <span class="project-badge">FastAPI & WebSocket</span>
+                <span class="project-badge">Scapy & iptables</span>
+              </div>
+            </div>
+          </div>
+          <span class="cert-tag emerald"><span class="en">★ Capstone Project — UCAS</span><span class="ar">★ مشروع التخرج المعتمد — UCAS</span></span>
+        </div>
+
+        <p class="project-desc en">An end-to-end intelligent network defense architecture that captures live network traffic, extracts 42 flow features, classifies known attacks with high precision, detects unseen zero-day anomalies, and automatically blocks malicious IPs while streaming alerts to a real-time dark-mode SOC Dashboard.</p>
+        <p class="project-desc ar">منظومة دفاع سيبراني ذكية ومتكاملة تعمل على التقاط حركة الشبكة الحية، واستخراج 42 خاصية تدفق، وتصنيف الهجمات المعروفة بدقة عالية، واكتشاف هجمات Zero-Day غير المعروفة مسبقاً، مع حظر عناوين IP المهاجمة تلقائياً وعرض التنبيهات لحظياً عبر لوحة تحكم أمنية (SOC Dashboard).</p>
+
+        <!-- Visual Pipeline -->
+        <div class="pipeline-box">
+          <span class="pipe-step">Live Traffic (Scapy)</span>
+          <span class="pipe-arrow">➔</span>
+          <span class="pipe-step">42 Features + SMOTE/Scaler</span>
+          <span class="pipe-arrow">➔</span>
+          <span class="pipe-step ai">XGBoost Classifier (86.82%)</span>
+          <span class="pipe-arrow">➔</span>
+          <span class="pipe-step ai">Autoencoder + Isolation Forest (90.1% Recall)</span>
+          <span class="pipe-arrow">➔</span>
+          <span class="pipe-step">SQLite + WebSocket SOC + iptables DROP</span>
+        </div>
+
+        <ul class="project-features">
+          <li><span class="en">Engineered multi-model classification benchmarking Decision Tree, Random Forest (GridSearchCV), and winning XGBoost model (86.82% accuracy, 0.8205 F1-score) on NSL-KDD.</span><span class="ar">هندسة ومقارنة نماذج Decision Tree و Random Forest واختيار نموذج XGBoost الفائز بدقة 86.82% على بيانات NSL-KDD.</span></li>
+          <li><span class="en">Built a hybrid Zero-Day anomaly hunting layer combining Deep Autoencoders (0.960 ROC-AUC) and Isolation Forest to catch previously unseen attacks.</span><span class="ar">بناء طبقة كشف شذوذ هجينة تجمع بين الشبكات العصبية (Autoencoder) وغابة العزل (Isolation Forest) لاصطياد الهجمات المجهولة.</span></li>
+          <li><span class="en">Tested in a virtualized Proxmox/Kali/Ubuntu lab against live DoS SYN Flood (hping3), Nmap recon, and SSH Brute Force (Hydra) with automated iptables blocking.</span><span class="ar">اختبار النظام عملياً ضد هجمات حجب الخدمة (DoS SYN Flood) وفحص المنافذ وتخمين كلمات المرور مع استجابة وحظر فوري.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Project 2: ProLaptop Ultimate v3.1 -->
     <div class="project-card">
-      <div class="project-header">
-        <div class="project-icon">🛡️</div>
-        <div>
-          <div class="project-title">ProLaptop Ultimate v3.1</div>
-          <div class="project-tech">
-            <span class="project-badge">PowerShell</span>
-            <span class="project-badge">BAT</span>
-            <span class="project-badge">WinPE</span>
+      <div>
+        <div class="project-header">
+          <div class="project-title-group">
+            <div class="project-icon">🛡️</div>
+            <div>
+              <div class="project-title">ProLaptop Ultimate v3.1</div>
+              <div class="project-tech">
+                <span class="project-badge">PowerShell</span>
+                <span class="project-badge">BAT</span>
+                <span class="project-badge">WinPE</span>
+                <span class="project-badge">Windows Admin</span>
+              </div>
+            </div>
           </div>
         </div>
+        <p class="project-desc en">A comprehensive 100-tool Windows PC maintenance, diagnostics, and cybersecurity framework organized across 7 specialized modules for IT technicians.</p>
+        <p class="project-desc ar">إطار متكامل لصيانة وتشخيص وأمن أنظمة Windows يضم 100 أداة احترافية موزعة على 7 فئات مع نسخة WinPE للإصلاح دون تشغيل النظام.</p>
+        <ul class="project-features">
+          <li><span class="en">Modules: System Repair (18), Cyber Security (15), Network & DNS (13), Diagnostics (16), Advanced (22).</span><span class="ar">يشمل أقسام: إصلاح النظام (18 أداة)، الأمن السيبراني (15 أداة)، الشبكات (13 أداة)، والتشخيص المتقدم.</span></li>
+          <li><span class="en">Includes bootable WinPE edition, auto SSD/HDD detection, and system restore safety checks.</span><span class="ar">يدعم الكشف التلقائي عن أقراص SSD/HDD وإنشاء نقاط استعادة النظام.</span></li>
+        </ul>
       </div>
-      <p class="project-desc en">A comprehensive Windows PC maintenance and cybersecurity framework with 100 tools across 7 categories. Built for professional IT technicians.</p>
-      <p class="project-desc ar">إطار متكامل لصيانة وأمن أجهزة Windows يضم 100 أداة موزعة على 7 فئات. يشمل نسخة WinPE للإصلاح دون تشغيل النظام. مصمم للتقنيين المحترفين.</p>
-      <ul class="project-features">
-        <li><span class="en">Power & Performance — 6 tools</span><span class="ar">الطاقة والأداء — 6 أدوات</span></li>
-        <li><span class="en">System Cleaning — 10 tools</span><span class="ar">تنظيف النظام — 10 أدوات</span></li>
-        <li><span class="en">System Repair — 18 tools</span><span class="ar">إصلاح النظام — 18 أداة</span></li>
-        <li><span class="en">Cyber Security — 15 tools</span><span class="ar">الأمن السيبراني — 15 أداة</span></li>
-      </ul>
-      <a href="https://github.com/mahmoud-kullab/ProLaptop-Ultimate" target="_blank" class="btn-outline">
-        <span class="en">View on GitHub →</span><span class="ar">عرض الكود المصدري →</span>
+      <a href="https://github.com/mahmoud-kullab/ProLaptop-Ultimate" target="_blank" class="btn-outline" style="width:100%">
+        <span class="en">View Source on GitHub ↗</span><span class="ar">عرض المشروع على GitHub ↗</span>
       </a>
     </div>
 
-    <!-- Library System -->
+    <!-- Project 3: Library Management System -->
     <div class="project-card">
-      <div class="project-header">
-        <div class="project-icon">📚</div>
-        <div>
-          <div class="project-title">Library Management System</div>
-          <div class="project-tech">
-            <span class="project-badge">Java</span>
-            <span class="project-badge">OOP</span>
-            <span class="project-badge">Console</span>
+      <div>
+        <div class="project-header">
+          <div class="project-title-group">
+            <div class="project-icon">📚</div>
+            <div>
+              <div class="project-title">Library Management System</div>
+              <div class="project-tech">
+                <span class="project-badge">Java</span>
+                <span class="project-badge">OOP</span>
+                <span class="project-badge">CRUD</span>
+                <span class="project-badge">ArrayList</span>
+              </div>
+            </div>
           </div>
         </div>
+        <p class="project-desc en">A console-based library management application built in Java demonstrating clean Object-Oriented Programming, encapsulation, and full CRUD workflows.</p>
+        <p class="project-desc ar">نظام إدارة مكتبة مبني بلغة Java يوظف مبادئ البرمجة الكائنية (OOP) والتغليف لإدارة عمليات الاستعارة والبحث والفهرسة.</p>
+        <ul class="project-features">
+          <li><span class="en">Full CRUD operations: add, case-insensitive search, borrow, return, and delete books.</span><span class="ar">إضافة، بحث ذكي غير حساس للأحرف، استعارة، إرجاع، وحذف الكتب.</span></li>
+          <li><span class="en">Robust input validation and exception handling for reliable operation.</span><span class="ar">تحقق دقيق من المدخلات ومعالجة شاملة للاستثناءات البرمجية.</span></li>
+        </ul>
       </div>
-      <p class="project-desc en">A console-based library management system built with Java using Object-Oriented Programming principles. Demonstrates encapsulation, class design, and CRUD operations.</p>
-      <p class="project-desc ar">نظام إدارة مكتبة قائم على وحدة التحكم مبني بـ Java باستخدام مبادئ البرمجة الكائنية. يُظهر التغليف وتصميم الكلاسات وعمليات CRUD.</p>
-      <ul class="project-features">
-        <li><span class="en">Display, search, borrow, return, add & delete books</span><span class="ar">عرض، بحث، استعارة، إرجاع، إضافة وحذف الكتب</span></li>
-        <li><span class="en">Input validation and exception handling</span><span class="ar">التحقق من المدخلات ومعالجة الاستثناءات</span></li>
-      </ul>
-      <a href="https://github.com/mahmoud-kullab/Library-Management-System-Java" target="_blank" class="btn-outline">
-        <span class="en">View on GitHub →</span><span class="ar">عرض الكود المصدري →</span>
+      <a href="https://github.com/mahmoud-kullab/Library-Management-System-Java" target="_blank" class="btn-outline" style="width:100%">
+        <span class="en">View Source on GitHub ↗</span><span class="ar">عرض المشروع على GitHub ↗</span>
       </a>
     </div>
 
+  </div>
+</section>
+
+<!-- CERTIFICATIONS VAULT -->
+<section id="certifications" class="reveal">
+  <div class="section-header">
+    <div>
+      <span class="section-label"><span class="en">04 // Verified Credentials Vault</span><span class="ar">04 // خزنة الشهادات والاعتمادات الموثقة</span></span>
+      <h2 class="section-title"><span class="en">Certifications & Badges (18+)</span><span class="ar">الشهادات والشارات الدولية (+18)</span></h2>
+    </div>
+  </div>
+
+  <!-- SEARCH & FILTER CONTROLS -->
+  <div class="vault-controls">
+    <div class="cert-filters">
+      <button class="filter-btn active" onclick="filterCerts('all', this)">
+        <span class="en">All (18)</span><span class="ar">الكل (18)</span>
+      </button>
+      <button class="filter-btn" onclick="filterCerts('network', this)">
+        <span class="en">🌐 Cisco & Networking (6)</span><span class="ar">🌐 الشبكات وسيسكو (6)</span>
+      </button>
+      <button class="filter-btn" onclick="filterCerts('cyber', this)">
+        <span class="en">🛡️ CyberSec & Linux (5)</span><span class="ar">🛡️ الأمن السيبراني ولينكس (5)</span>
+      </button>
+      <button class="filter-btn" onclick="filterCerts('ai', this)">
+        <span class="en">🧠 AI & Dev (2)</span><span class="ar">🧠 الذكاء الاصطناعي والبرمجة (2)</span>
+      </button>
+      <button class="filter-btn" onclick="filterCerts('business', this)">
+        <span class="en">💼 ICDL & Business (5)</span><span class="ar">💼 الحاسوب والأعمال (5)</span>
+      </button>
+    </div>
+
+    <input type="text" id="certSearchInput" class="cert-search" oninput="updateCertDisplay()" placeholder="🔍 Search certificates (e.g. CCNA, NVIDIA)...">
+  </div>
+
+  <div class="certs-grid" id="certsGrid">
+
+    <!-- 1. CCNA: Introduction to Networks (FEATURED NEW) -->
+    <div class="cert-card ccna-featured" data-category="network">
+      <div>
+        <div class="cert-top">
+          <span class="cert-tag emerald">★ NEW · CCNA Track 1</span>
+          <span class="cert-tag">ID: 2ad6c4b5</span>
+        </div>
+        <div class="cert-name">CCNA: Introduction to Networks (ITN)</div>
+        <div class="cert-issuer">Cisco Networking Academy — UCAS (Instructor: Eid Elagha)</div>
+      </div>
+      <div class="cert-footer">
+        <span class="cert-date">Oct 25, 2026</span>
+        <a class="cert-verify" href="https://www.credly.com/badges/878aa9ff-d2a1-4dcc-b295-3363b6825271/public_url" target="_blank">✓ Verify on Credly ↗</a>
+      </div>
+    </div>
+
+    <!-- 2. NVIDIA AI on Jetson Nano -->
+    <div class="cert-card" data-category="ai">
+      <div>
+        <div class="cert-top">
+          <span class="cert-tag">AI & Deep Learning</span>
+          <span class="cert-tag">Competency</span>
+        </div>
+        <div class="cert-name">Getting Started with AI on Jetson Nano</div>
+        <div class="cert-issuer">NVIDIA</div>
+      </div>
+      <div class="cert-footer">
+        <span class="cert-date">Jun 16, 2026</span>
+        <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Certificate ↗</a>
+      </div>
+    </div>
+
+    <!-- 3. HP LIFE Business Email -->
+    <div class="cert-card" data-category="business">
+      <div>
+        <div class="cert-top">
+          <span class="cert-tag">Business Communication</span>
+        </div>
+        <div class="cert-name">Business Email</div>
+        <div class="cert-issuer">HP LIFE (HP Foundation)</div>
+      </div>
+      <div class="cert-footer">
+        <span class="cert-date">Jun 17, 2026</span>
+        <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Certificate ↗</a>
+      </div>
+    </div>
+
+    <!-- 4. Cisco Networking Basics -->
+    <div class="cert-card" data-category="network">
+      <div>
+        <div class="cert-top">
+          <span class="cert-tag">Networking</span>
+        </div>
+        <div class="cert-name">Networking Basics</div>
+        <div class="cert-issuer">Cisco Networking Academy</div>
+      </div>
+      <div class="cert-footer">
+        <span class="cert-date">May 12, 2026</span>
+        <a class="cert-verify" href="https://www.credly.com/badges/94cda99a-f841-4585-aeb3-8ef137ccfd63/public_url" target="_blank">✓ Verify on Credly ↗</a>
+      </div>
+    </div>
+
+    <!-- 5. Nmap Live Host Discovery -->
+    <div class="cert-card" data-category="cyber">
+      <div>
+        <div class="cert-top">
+          <span class="cert-tag">Network Recon</span>
+        </div>
+        <div class="cert-name">Nmap Live Host Discovery</div>
+        <div class="cert-issuer">TryHackMe</div>
+      </div>
+      <div class="cert-footer">
+        <span class="cert-date">May 26, 2026</span>
+        <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Completion ↗</a>
+      </div>
+    </div>
+
+    <!-- 6. Getting Started with Cisco Packet Tracer (Instructor-Led) -->
+    <div class="cert-card" data-category="network">
+      <div>
+        <div class="cert-top">
+          <span class="cert-tag">Instructor-Led</span>
+        </div>
+        <div class="cert-name">Getting Started with Cisco Packet Tracer</div>
+        <div class="cert-issuer">Cisco Networking Academy — UCAS</div>
+      </div>
+      <div class="cert-footer">
+        <span class="cert-date">May 17, 2026</span>
+        <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Certificate ↗</a>
+      </div>
+    </div>
+
+    <!-- 7. Active Reconnaissance -->
+    <div class="cert-card" data-category="cyber">
+      <div>
+        <div class="cert-top">
+          <span class="cert-tag">Offensive Security</span>
+        </div>
+        <div class="cert-name">Active Reconnaissance</div>
+        <div class="cert-issuer">TryHackMe</div>
+      </div>
+      <div class="cert-footer">
+        <span class="cert-date">May 26, 2026</span>
+        <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Completion ↗</a>
+      </div>
+    </div>
+
+    <!-- 8. Passive Reconnaissance -->
+    <div class="cert-card" data-category="cyber">
+      <div>
+        <div class="cert-top">
+          <span class="cert-tag">OSINT & Recon</span>
+        </div>
+        <div class="cert-name">Passive Reconnaissance</div>
+        <div class="cert-issuer">TryHackMe</div>
+      </div>
+      <div class="cert-footer">
+        <span class="cert-date">May 26, 2026</span>
+        <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Completion ↗</a>
+      </div>
+    </div>
+
+    <!-- 9. ICDL Base Specialization -->
+    <div class="cert-card" data-category="business">
+      <div>
+        <div class="cert-top">
+          <span class="cert-tag">4 Modules</span>
+        </div>
+        <div class="cert-name">ICDL Base Specialization (Computer, Word, Excel, Internet & Email)</div>
+        <div class="cert-issuer">Edraak (إدراك)</div>
+      </div>
+      <div class="cert-footer">
+        <span class="cert-date">Apr 2026</span>
+        <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Certificate ↗</a>
+      </div>
+    </div>
+
+    <!-- 10. Getting Started with Cisco Packet Tracer (Self-Paced) -->
+    <div class="cert-card" data-category="network">
+      <div>
+        <div class="cert-top">
+          <span class="cert-tag">Self-Paced</span>
+        </div>
+        <div class="cert-name">Getting Started with Cisco Packet Tracer</div>
+        <div class="cert-issuer">Cisco Networking Academy</div>
+      </div>
+      <div class="cert-footer">
+        <span class="cert-date">Apr 18, 2026</span>
+        <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Certificate ↗</a>
+      </div>
+    </div>
+
+    <!-- 11. Introduction to Packet Tracer Badge -->
+    <div class="cert-card" data-category="network">
+      <div>
+        <div class="cert-top">
+          <span class="cert-tag">Cisco Badge</span>
+        </div>
+        <div class="cert-name">Introduction to Packet Tracer</div>
+        <div class="cert-issuer">Cisco Networking Academy</div>
+      </div>
+      <div class="cert-footer">
+        <span class="cert-date">Apr 18, 2026</span>
+        <a class="cert-verify" href="https://www.credly.com/badges/96c8c5e2-ce0a-4ec8-b4bf-a0715b1b7673/public_url" target="_blank">✓ Verify on Credly ↗</a>
+      </div>
+    </div>
+
+    <!-- 12. Linux Fundamentals Badge -->
+    <div class="cert-card" data-category="cyber">
+      <div>
+        <div class="cert-top">
+          <span class="cert-tag">Linux OS</span>
+        </div>
+        <div class="cert-name">cat linux.txt — Linux Fundamentals Badge</div>
+        <div class="cert-issuer">TryHackMe</div>
+      </div>
+      <div class="cert-footer">
+        <span class="cert-date">Jan 2026</span>
+        <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Badge ↗</a>
+      </div>
+    </div>
+
+    <!-- 13. Networking Fundamentals (UCAS) -->
+    <div class="cert-card" data-category="network">
+      <div>
+        <div class="cert-top">
+          <span class="cert-tag">22 Hours</span>
+        </div>
+        <div class="cert-name">Networking Fundamentals — Network Basics</div>
+        <div class="cert-issuer">Cisco Networking Academy — UCAS</div>
+      </div>
+      <div class="cert-footer">
+        <span class="cert-date">Jan 2026</span>
+        <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Certificate ↗</a>
+      </div>
+    </div>
+
+    <!-- 14. Java Programming & CompTIA A+ -->
+    <div class="cert-card" data-category="ai">
+      <div>
+        <div class="cert-top">
+          <span class="cert-tag">Dev & Hardware</span>
+        </div>
+        <div class="cert-name">Java Programming & CompTIA A+ (Self-Study)</div>
+        <div class="cert-issuer">Self-Directed Training</div>
+      </div>
+      <div class="cert-footer">
+        <span class="cert-date">Jan – Feb 2026</span>
+        <span class="cert-date">✓ Completed</span>
+      </div>
+    </div>
+
+    <!-- 15. Offensive Security Intro -->
+    <div class="cert-card" data-category="cyber">
+      <div>
+        <div class="cert-top">
+          <span class="cert-tag">Red Teaming</span>
+        </div>
+        <div class="cert-name">Offensive Security Intro</div>
+        <div class="cert-issuer">TryHackMe</div>
+      </div>
+      <div class="cert-footer">
+        <span class="cert-date">Dec 2025</span>
+        <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Badge ↗</a>
+      </div>
+    </div>
+
+    <!-- 16. Canva for Beginners -->
+    <div class="cert-card" data-category="business">
+      <div>
+        <div class="cert-top">
+          <span class="cert-tag">Visual Design</span>
+        </div>
+        <div class="cert-name">Canva for Beginners</div>
+        <div class="cert-issuer">Coursera — Freedom Learning Group</div>
+      </div>
+      <div class="cert-footer">
+        <span class="cert-date">Nov 2025</span>
+        <a class="cert-verify" href="https://coursera.org/verify/X6JYWIUJITVX" target="_blank">✓ Verify on Coursera ↗</a>
+      </div>
+    </div>
+
+    <!-- 17. Advanced English Language Courses -->
+    <div class="cert-card" data-category="business">
+      <div>
+        <div class="cert-top">
+          <span class="cert-tag">330 Hours</span>
+        </div>
+        <div class="cert-name">Advanced English Language Courses</div>
+        <div class="cert-issuer">Palestinian Red Crescent Society (PRCS)</div>
+      </div>
+      <div class="cert-footer">
+        <span class="cert-date">2020</span>
+        <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Certificate ↗</a>
+      </div>
+    </div>
+
+    <!-- 18. Professional Home Electrician Diploma -->
+    <div class="cert-card" data-category="business">
+      <div>
+        <div class="cert-top">
+          <span class="cert-tag">80 Hours</span>
+        </div>
+        <div class="cert-name">Professional Home Electrician Diploma</div>
+        <div class="cert-issuer">Golden House Consulting & Training</div>
+      </div>
+      <div class="cert-footer">
+        <span class="cert-date">Sep 2019</span>
+        <a class="cert-verify" href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank">✓ View Certificate ↗</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align: center; margin-top: 2.6rem;" id="toggleBtnContainer">
+    <button onclick="toggleCerts()" id="toggleCertsBtn" class="btn-outline">
+      <span class="en">⬇ Show All 18 Credentials</span>
+      <span class="ar">⬇ عرض جميع الشهادات (18)</span>
+    </button>
+  </div>
+</section>
+
+<!-- EXPERIENCE & EDUCATION -->
+<section id="experience" class="reveal">
+  <div class="section-header">
+    <div>
+      <span class="section-label"><span class="en">05 // Career & Academic Logs</span><span class="ar">05 // السجل المهني والأكاديمي</span></span>
+      <h2 class="section-title"><span class="en">Experience & Education</span><span class="ar">الخبرة العملية والتعليم</span></h2>
+    </div>
+  </div>
+
+  <div class="dual-timeline">
+    <!-- Left: Professional Experience -->
+    <div class="timeline-col">
+      <h3><span class="en">💼 Professional Experience</span><span class="ar">💼 الخبرة العملية والتطوعية</span></h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="tl-date">Jan 2024 – Present</div>
+          <div class="tl-title">
+            <span class="en">ICT Specialist & Data Entry Clerk</span><span class="ar">أخصائي تقنية معلومات ومدخل بيانات</span>
+            <span class="tl-badge"><span class="en">Volunteer</span><span class="ar">تطوع</span></span>
+          </div>
+          <div class="tl-org"><span class="en">Palestinian Red Crescent Society (PRCS) · Khan Younis</span><span class="ar">جمعية الهلال الأحمر الفلسطيني · خان يونس</span></div>
+          <div class="tl-desc en">Providing direct and remote IT support, maintaining network infrastructure, implementing information security procedures, and managing high-precision databases.</div>
+          <div class="tl-desc ar">تقديم الدعم الفني المباشر وعن بُعد، صيانة البنية التحتية للشبكات، تطبيق سياسات أمن المعلومات، وإدارة قواعد البيانات والسجلات الرقمية بدقة عالية.</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="tl-date">Jan 2019 – Present</div>
+          <div class="tl-title">
+            <span class="en">IT Technician & Programmer</span><span class="ar">فني تقنية معلومات ومبرمج</span>
+            <span class="tl-badge"><span class="en">Self-Employed</span><span class="ar">عمل حر</span></span>
+          </div>
+          <div class="tl-org"><span class="en">Pro Laptop · Khan Younis</span><span class="ar">برو لاب توب · خان يونس</span></div>
+          <div class="tl-desc en">Advanced hardware/software diagnostics for PCs and smartphones, custom OS deployments, and creator of the 100-tool ProLaptop Ultimate v3.1 framework.</div>
+          <div class="tl-desc ar">تشخيص وصيانة أعطال الحواسيب والهواتف الذكية، برمجة الأنظمة، وتطوير إطار الصيانة والأمن السيبراني ProLaptop Ultimate v3.1.</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="tl-date">Sep 2024 – Oct 2024</div>
+          <div class="tl-title">
+            <span class="en">Emergency Vaccination Campaign Worker</span><span class="ar">عامل في حملة التطعيم الطارئة</span>
+          </div>
+          <div class="tl-org"><span class="en">UNICEF · Gaza Strip</span><span class="ar">منظمة اليونيسف (UNICEF) · قطاع غزة</span></div>
+          <div class="tl-desc en">Managed field logistics and coordinated with local health teams during the national emergency polio vaccination campaign.</div>
+          <div class="tl-desc ar">إدارة اللوجستيات الميدانية والتنسيق مع الفرق الصحية خلال الحملة الوطنية الطارئة للتطعيم ضد شلل الأطفال.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Education & Community Leadership -->
+    <div class="timeline-col">
+      <h3><span class="en">🎓 Education & Leadership</span><span class="ar">🎓 التعليم والقيادة المجتمعية</span></h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="tl-date">Jul 2023 – Aug 2026</div>
+          <div class="tl-title">
+            <span class="en">Diploma in Cybersecurity</span><span class="ar">دبلوم أمن المعلومات السيبراني</span>
+          </div>
+          <div class="tl-org"><span class="en">University College of Applied Sciences (UCAS)</span><span class="ar">الكلية الجامعية للعلوم التطبيقية (UCAS)</span></div>
+          <div class="tl-desc en">Graduated from the Computer Engineering Dept. Defended capstone project: "AI-Powered Network Intrusion Detection & Prevention System (NIDS/IPS)".</div>
+          <div class="tl-desc ar">خريج تخصص أمن المعلومات بقسم هندسة الحاسوب، ومناقشة مشروع التخرج "نظام كشف ومنع التسلل بالذكاء الاصطناعي (NIDS/IPS)".</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="tl-date">2026 – Present</div>
+          <div class="tl-title">
+            <span class="en">Technical Mentor & Team Member</span><span class="ar">موجه تقني وعضو فريق</span>
+          </div>
+          <div class="tl-org"><span class="en">Ofuq (AFOQ) Engineering Community & TALENT</span><span class="ar">فريق ومجتمع أفق الهندسي (AFOQ) ومنصة TALENT</span></div>
+          <div class="tl-desc en">Guiding students academically and technically, fostering practical skills in cybersecurity, networking, and operating systems.</div>
+          <div class="tl-desc ar">دعم الطلاب وتوجيههم أكاديمياً وتقنياً، وتنمية مهاراتهم العملية في مجالات الأمن السيبراني والشبكات وأنظمة التشغيل.</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="tl-date">2022</div>
+          <div class="tl-title">
+            <span class="en">High School Certificate</span><span class="ar">شهادة الثانوية العامة</span>
+          </div>
+          <div class="tl-org"><span class="en">Haroun Al-Rasheed High School · Gaza Strip</span><span class="ar">مدرسة هارون الرشيد الثانوية · قطاع غزة</span></div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="reveal">
-  <div class="section-label"><span class="en">06 // Connect</span><span class="ar">06 // تواصل معي</span></div>
-  <div class="section-title"><span class="en">Initialize Contact</span><span class="ar">تأسيس الاتصال</span></div>
+  <div class="section-header">
+    <div>
+      <span class="section-label"><span class="en">06 // Initialize Connection</span><span class="ar">06 // قنوات التواصل المباشر</span></span>
+      <h2 class="section-title"><span class="en">Get In Touch</span><span class="ar">تواصل معي</span></h2>
+    </div>
+  </div>
+
   <div class="contact-grid">
-    
-    <!-- Contact Info Cards -->
     <div class="contact-info">
-      <a href="mailto:mahmood.kullab2004@gmail.com" class="contact-item">
-        <div class="contact-icon">✉</div>
-        <div><div class="contact-label">Email</div><div class="contact-value">mahmood.kullab2004@gmail.com</div></div>
+      <div class="contact-item">
+        <a href="mailto:mahmood.kullab2004@gmail.com" class="contact-item-left" style="text-decoration:none; color:inherit;">
+          <div class="contact-icon">✉</div>
+          <div><div class="contact-label">Email</div><div class="contact-value">mahmood.kullab2004@gmail.com</div></div>
+        </a>
+        <button class="copy-pill" onclick="copyEmail()">
+          <span class="en">Copy</span><span class="ar">نسخ</span>
+        </button>
+      </div>
+
+      <a href="https://wa.me/970599548716" target="_blank" class="contact-item">
+        <div class="contact-item-left">
+          <div class="contact-icon">☎</div>
+          <div><div class="contact-label">Phone / WhatsApp</div><div class="contact-value">+970 599 548 716</div></div>
+        </div>
+        <span style="color:var(--accent); font-size:0.85rem;">↗</span>
       </a>
-      <a href="tel:+970599548716" class="contact-item">
-        <div class="contact-icon">☎</div>
-        <div><div class="contact-label">Phone / WhatsApp</div><div class="contact-value">+970 599 548 716</div></div>
-      </a>
+
       <a href="https://linkedin.com/in/m-kullab" target="_blank" class="contact-item">
-        <div class="contact-icon">in</div>
-        <div><div class="contact-label">LinkedIn</div><div class="contact-value">linkedin.com/in/m-kullab</div></div>
+        <div class="contact-item-left">
+          <div class="contact-icon">in</div>
+          <div><div class="contact-label">LinkedIn</div><div class="contact-value">linkedin.com/in/m-kullab</div></div>
+        </div>
+        <span style="color:var(--accent); font-size:0.85rem;">↗</span>
       </a>
+
       <a href="https://github.com/mahmoud-kullab" target="_blank" class="contact-item">
-        <div class="contact-icon">⌥</div>
-        <div><div class="contact-label">GitHub</div><div class="contact-value">github.com/mahmoud-kullab</div></div>
+        <div class="contact-item-left">
+          <div class="contact-icon">⌥</div>
+          <div><div class="contact-label">GitHub</div><div class="contact-value">github.com/mahmoud-kullab</div></div>
+        </div>
+        <span style="color:var(--accent); font-size:0.85rem;">↗</span>
+      </a>
+
+      <a href="https://x.com/m_s_kullab" target="_blank" class="contact-item">
+        <div class="contact-item-left">
+          <div class="contact-icon">𝕏</div>
+          <div><div class="contact-label">X (Twitter)</div><div class="contact-value">x.com/m_s_kullab</div></div>
+        </div>
+        <span style="color:var(--accent); font-size:0.85rem;">↗</span>
       </a>
     </div>
 
-    <!-- Secure Channels Box -->
     <div class="secure-box">
       <h3 class="en">Ready to Collaborate?</h3>
-      <h3 class="ar">جاهز للتعاون؟</h3>
-      <p class="en">I am currently open to new opportunities. Let's discuss how I can contribute to your team.</p>
-      <p class="ar">أنا متاح حالياً لفرص عمل جديدة. دعنا نناقش كيف يمكنني إضافة قيمة لفريقك.</p>
-      
-      <!-- Option 1: Native Mail App (Outlook/Mail) -->
+      <h3 class="ar">جاهز للانضمام إلى فريقكم التقني</h3>
+      <p class="en">I am currently available for full-time, remote, and freelance opportunities in Cybersecurity, Network Administration (CCNA), and IT Support.</p>
+      <p class="ar">متاح حالياً لفرص العمل الكامل، العمل عن بُعد، والمشاريع التقنية في مجالات الأمن السيبراني، هندسة الشبكات (CCNA)، والدعم الفني.</p>
       <a href="mailto:mahmood.kullab2004@gmail.com" class="btn-primary">
-        <span class="en">✉️ Send Email</span><span class="ar">✉️ إرسال بريد إلكتروني</span>
+        <span class="en">✉️ Send Direct Email</span><span class="ar">✉️ إرسال بريد إلكتروني مباشر</span>
       </a>
-      
-      <!-- Option 2: WhatsApp -->
       <a href="https://wa.me/970599548716" target="_blank" class="btn-outline">
-        <span class="en">💬 Message on WhatsApp</span><span class="ar">💬 تواصل عبر واتساب</span>
+        <span class="en">💬 Message on WhatsApp</span><span class="ar">💬 محادثة فورية عبر واتساب</span>
+      </a>
+      <a href="https://drive.google.com/drive/folders/10IcPKqgIAz5V0YXPwwA5WdnrLqLFM9kP?usp=sharing" target="_blank" class="btn-outline" style="margin-bottom:0">
+        <span class="en">📁 Browse Full Certificate Archive</span><span class="ar">📁 تصفح الأرشيف الكامل للشهادات</span>
       </a>
     </div>
-
   </div>
 </section>
 
 <footer>
-  <span class="en">© 2026 Mahmoud Sami Kullab · Securing the future in Khan Younis, Gaza Strip 🇵🇸</span>
-  <span class="ar">© 2026 محمود سامي كلاب · تأمين المستقبل الرقمي من خان يونس، قطاع غزة 🇵🇸</span>
+  <span class="en">© 2026 Mahmoud Sami Kullab · Securing the digital frontier from Khan Younis, Gaza Strip 🇵🇸</span>
+  <span class="ar">© 2026 محمود سامي كلاب · صُمم وطُوّر في خان يونس، قطاع غزة 🇵🇸</span>
 </footer>
 
 <script>
 let currentLang = 'en';
+let certsExpanded = false;
+let activeCategory = 'all';
+
 function toggleLang() {
   currentLang = currentLang === 'en' ? 'ar' : 'en';
   document.documentElement.lang = currentLang;
   document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
   document.getElementById('langBtn').textContent = currentLang === 'en' ? 'عربي' : 'English';
-  document.body.style.fontFamily = currentLang === 'ar' ? "'Cairo', sans-serif" : "'DM Sans', sans-serif";
-  
-  updateToggleButtonText();
+  document.getElementById('certSearchInput').placeholder = currentLang === 'en'
+    ? '🔍 Search certificates (e.g. CCNA, NVIDIA)...'
+    : '🔍 ابحث في الشهادات (مثال: CCNA, NVIDIA)...';
+  updateCertDisplay();
 }
 
-// Toggle Hidden Certificates Logic
-let certsVisible = false;
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('navLinks').classList.remove('open');
+}
+
+function switchTab(paneId, btnEl) {
+  document.querySelectorAll('.t-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.t-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById(paneId).classList.add('active');
+  btnEl.classList.add('active');
+}
+
+function filterCerts(category, btnEl) {
+  activeCategory = category;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btnEl.classList.add('active');
+  updateCertDisplay();
+}
+
 function toggleCerts() {
-  const hiddenCerts = document.getElementById('hiddenCerts');
-  certsVisible = !certsVisible;
-  
-  if(certsVisible) {
-    hiddenCerts.classList.remove('hidden-certs');
-    hiddenCerts.classList.add('visible-certs');
-  } else {
-    hiddenCerts.classList.add('hidden-certs');
-    hiddenCerts.classList.remove('visible-certs');
-  }
-  updateToggleButtonText();
+  certsExpanded = !certsExpanded;
+  updateCertDisplay();
 }
 
-function updateToggleButtonText() {
-  const btn = document.getElementById('toggleCertsBtn');
-  if(currentLang === 'en') {
-    btn.innerHTML = certsVisible ? '<span class="en">⬆ Hide Certificates</span>' : '<span class="en">⬇ Show All Certificates (17+)</span>';
+function updateCertDisplay() {
+  const cards = document.querySelectorAll('.cert-card');
+  const query = document.getElementById('certSearchInput').value.toLowerCase().trim();
+  const toggleContainer = document.getElementById('toggleBtnContainer');
+  const toggleBtn = document.getElementById('toggleCertsBtn');
+
+  let visibleCount = 0;
+
+  cards.forEach((card) => {
+    const cat = card.getAttribute('data-category');
+    const text = card.innerText.toLowerCase();
+    const matchesCat = (activeCategory === 'all' || cat === activeCategory);
+    const matchesQuery = (!query || text.includes(query));
+
+    if (matchesCat && matchesQuery) {
+      if (activeCategory === 'all' && !query && !certsExpanded && visibleCount >= 6) {
+        card.style.display = 'none';
+      } else {
+        card.style.display = 'flex';
+      }
+      visibleCount++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+
+  if (activeCategory === 'all' && !query) {
+    toggleContainer.style.display = 'block';
+    if (currentLang === 'en') {
+      toggleBtn.innerHTML = certsExpanded ? '⬆ Show Top 6 Only' : '⬇ Show All 18 Credentials';
+    } else {
+      toggleBtn.innerHTML = certsExpanded ? '⬆ عرض أبرز 6 شهادات فقط' : '⬇ عرض جميع الشهادات (18)';
+    }
   } else {
-    btn.innerHTML = certsVisible ? '<span class="ar">⬆ إخفاء الشهادات</span>' : '<span class="ar">⬇ عرض جميع الشهادات (17+)</span>';
+    toggleContainer.style.display = 'none';
   }
 }
+
+function copyEmail() {
+  navigator.clipboard.writeText('mahmood.kullab2004@gmail.com');
+  const toast = document.getElementById('toast');
+  toast.textContent = currentLang === 'en' ? '✓ Email copied to clipboard!' : '✓ تم نسخ البريد الإلكتروني بنجاح!';
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2600);
+}
+
+// Scroll Progress & Active Nav Spy
+window.addEventListener('scroll', () => {
+  const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progress = (scrollTop / scrollHeight) * 100;
+  document.getElementById('scrollProgress').style.width = progress + '%';
+
+  const sections = document.querySelectorAll('section');
+  const navItems = document.querySelectorAll('.nav-item');
+  let currentSec = '';
+  sections.forEach(sec => {
+    if (window.scrollY >= sec.offsetTop - 180) {
+      currentSec = sec.getAttribute('id');
+    }
+  });
+  navItems.forEach(item => {
+    item.classList.remove('active');
+    if (item.getAttribute('href') === '#' + currentSec) {
+      item.classList.add('active');
+    }
+  });
+});
+
+updateCertDisplay();
 
 // Scroll Reveal
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
   });
 }, { threshold: 0.08 });
 reveals.forEach(r => observer.observe(r));
